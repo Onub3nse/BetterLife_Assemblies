@@ -1,0 +1,247 @@
+{
+  "Version": 1,
+  "WorkspaceRootPath": "D:\\Modding\\CaptainOfIndustry\\BetterLife_Assemblies\\",
+  "Documents": [
+    {
+      "AbsoluteMoniker": "D:0:0:{5943759D-2613-4C80-BD3A-29FF36D2FDF5}|BetterLife_Assemblies.csproj|d:\\modding\\captainofindustry\\betterlife_assemblies\\betterlifeext.cs||{A6C744A8-0E4A-4FC6-886A-064283054674}",
+      "RelativeMoniker": "D:0:0:{5943759D-2613-4C80-BD3A-29FF36D2FDF5}|BetterLife_Assemblies.csproj|solutionrelative:betterlifeext.cs||{A6C744A8-0E4A-4FC6-886A-064283054674}"
+    },
+    {
+      "AbsoluteMoniker": "D:0:0:{5943759D-2613-4C80-BD3A-29FF36D2FDF5}|BetterLife_Assemblies.csproj|d:\\modding\\captainofindustry\\betterlife_assemblies\\cusmachinecommandsprocessor.cs||{A6C744A8-0E4A-4FC6-886A-064283054674}",
+      "RelativeMoniker": "D:0:0:{5943759D-2613-4C80-BD3A-29FF36D2FDF5}|BetterLife_Assemblies.csproj|solutionrelative:cusmachinecommandsprocessor.cs||{A6C744A8-0E4A-4FC6-886A-064283054674}"
+    },
+    {
+      "AbsoluteMoniker": "D:0:0:{5943759D-2613-4C80-BD3A-29FF36D2FDF5}|BetterLife_Assemblies.csproj|d:\\modding\\captainofindustry\\betterlife_assemblies\\config.json||{90A6B3A7-C1A3-4009-A288-E2FF89E96FA0}",
+      "RelativeMoniker": "D:0:0:{5943759D-2613-4C80-BD3A-29FF36D2FDF5}|BetterLife_Assemblies.csproj|solutionrelative:config.json||{90A6B3A7-C1A3-4009-A288-E2FF89E96FA0}"
+    },
+    {
+      "AbsoluteMoniker": "D:0:0:{5943759D-2613-4C80-BD3A-29FF36D2FDF5}|BetterLife_Assemblies.csproj|d:\\modding\\captainofindustry\\betterlife_assemblies\\betterlife_assemblies.csproj||{FA3CD31E-987B-443A-9B81-186104E8DAC1}|",
+      "RelativeMoniker": "D:0:0:{5943759D-2613-4C80-BD3A-29FF36D2FDF5}|BetterLife_Assemblies.csproj|solutionrelative:betterlife_assemblies.csproj||{FA3CD31E-987B-443A-9B81-186104E8DAC1}|"
+    },
+    {
+      "AbsoluteMoniker": "D:0:0:{5943759D-2613-4C80-BD3A-29FF36D2FDF5}|BetterLife_Assemblies.csproj|d:\\modding\\captainofindustry\\betterlife_assemblies\\assets_common.txt||{8B382828-6202-11D1-8870-0000F87579D2}",
+      "RelativeMoniker": "D:0:0:{5943759D-2613-4C80-BD3A-29FF36D2FDF5}|BetterLife_Assemblies.csproj|solutionrelative:assets_common.txt||{8B382828-6202-11D1-8870-0000F87579D2}"
+    },
+    {
+      "AbsoluteMoniker": "D:0:0:{5943759D-2613-4C80-BD3A-29FF36D2FDF5}|BetterLife_Assemblies.csproj|d:\\modding\\captainofindustry\\betterlife_assemblies\\betterlifesrecipedef.cs||{A6C744A8-0E4A-4FC6-886A-064283054674}",
+      "RelativeMoniker": "D:0:0:{5943759D-2613-4C80-BD3A-29FF36D2FDF5}|BetterLife_Assemblies.csproj|solutionrelative:betterlifesrecipedef.cs||{A6C744A8-0E4A-4FC6-886A-064283054674}"
+    },
+    {
+      "AbsoluteMoniker": "D:0:0:{5943759D-2613-4C80-BD3A-29FF36D2FDF5}|BetterLife_Assemblies.csproj|d:\\modding\\captainofindustry\\betterlife_assemblies\\betterlifesmachinedef.cs||{A6C744A8-0E4A-4FC6-886A-064283054674}",
+      "RelativeMoniker": "D:0:0:{5943759D-2613-4C80-BD3A-29FF36D2FDF5}|BetterLife_Assemblies.csproj|solutionrelative:betterlifesmachinedef.cs||{A6C744A8-0E4A-4FC6-886A-064283054674}"
+    },
+    {
+      "AbsoluteMoniker": "D:0:0:{5943759D-2613-4C80-BD3A-29FF36D2FDF5}|BetterLife_Assemblies.csproj|d:\\modding\\captainofindustry\\betterlife_assemblies\\researchdata.cs||{A6C744A8-0E4A-4FC6-886A-064283054674}",
+      "RelativeMoniker": "D:0:0:{5943759D-2613-4C80-BD3A-29FF36D2FDF5}|BetterLife_Assemblies.csproj|solutionrelative:researchdata.cs||{A6C744A8-0E4A-4FC6-886A-064283054674}"
+    },
+    {
+      "AbsoluteMoniker": "D:0:0:{5943759D-2613-4C80-BD3A-29FF36D2FDF5}|BetterLife_Assemblies.csproj|d:\\modding\\captainofindustry\\betterlife_assemblies\\custommachineproto.cs||{A6C744A8-0E4A-4FC6-886A-064283054674}",
+      "RelativeMoniker": "D:0:0:{5943759D-2613-4C80-BD3A-29FF36D2FDF5}|BetterLife_Assemblies.csproj|solutionrelative:custommachineproto.cs||{A6C744A8-0E4A-4FC6-886A-064283054674}"
+    },
+    {
+      "AbsoluteMoniker": "D:0:0:{5943759D-2613-4C80-BD3A-29FF36D2FDF5}|BetterLife_Assemblies.csproj|d:\\modding\\captainofindustry\\betterlife_assemblies\\ids\\idsrecipes.cs||{A6C744A8-0E4A-4FC6-886A-064283054674}",
+      "RelativeMoniker": "D:0:0:{5943759D-2613-4C80-BD3A-29FF36D2FDF5}|BetterLife_Assemblies.csproj|solutionrelative:ids\\idsrecipes.cs||{A6C744A8-0E4A-4FC6-886A-064283054674}"
+    },
+    {
+      "AbsoluteMoniker": "D:0:0:{5943759D-2613-4C80-BD3A-29FF36D2FDF5}|BetterLife_Assemblies.csproj|d:\\modding\\captainofindustry\\betterlife_assemblies\\ids\\idsmachines.cs||{A6C744A8-0E4A-4FC6-886A-064283054674}",
+      "RelativeMoniker": "D:0:0:{5943759D-2613-4C80-BD3A-29FF36D2FDF5}|BetterLife_Assemblies.csproj|solutionrelative:ids\\idsmachines.cs||{A6C744A8-0E4A-4FC6-886A-064283054674}"
+    },
+    {
+      "AbsoluteMoniker": "D:0:0:{5943759D-2613-4C80-BD3A-29FF36D2FDF5}|BetterLife_Assemblies.csproj|d:\\modding\\captainofindustry\\betterlife_assemblies\\ids\\idsbuildings.cs||{A6C744A8-0E4A-4FC6-886A-064283054674}",
+      "RelativeMoniker": "D:0:0:{5943759D-2613-4C80-BD3A-29FF36D2FDF5}|BetterLife_Assemblies.csproj|solutionrelative:ids\\idsbuildings.cs||{A6C744A8-0E4A-4FC6-886A-064283054674}"
+    },
+    {
+      "AbsoluteMoniker": "D:0:0:{5943759D-2613-4C80-BD3A-29FF36D2FDF5}|BetterLife_Assemblies.csproj|d:\\modding\\captainofindustry\\betterlife_assemblies\\ids\\idsresearch.cs||{A6C744A8-0E4A-4FC6-886A-064283054674}",
+      "RelativeMoniker": "D:0:0:{5943759D-2613-4C80-BD3A-29FF36D2FDF5}|BetterLife_Assemblies.csproj|solutionrelative:ids\\idsresearch.cs||{A6C744A8-0E4A-4FC6-886A-064283054674}"
+    },
+    {
+      "AbsoluteMoniker": "D:0:0:{A2FE74E1-B743-11D0-AE1A-00A0C90FFFC3}|\u003CMiscFiles\u003E|D:\\Modding\\CaptainOfIndustry\\BetterLife_Assemblies\\Assets\\Editor\\ColliderToFit.cs||{A6C744A8-0E4A-4FC6-886A-064283054674}",
+      "RelativeMoniker": "D:0:0:{A2FE74E1-B743-11D0-AE1A-00A0C90FFFC3}|\u003CMiscFiles\u003E|solutionrelative:Assets\\Editor\\ColliderToFit.cs||{A6C744A8-0E4A-4FC6-886A-064283054674}"
+    }
+  ],
+  "DocumentGroupContainers": [
+    {
+      "Orientation": 0,
+      "VerticalTabListWidth": 256,
+      "DocumentGroups": [
+        {
+          "DockedWidth": 200,
+          "SelectedChildIndex": 13,
+          "Children": [
+            {
+              "$type": "Document",
+              "DocumentIndex": 4,
+              "Title": "assets_common.txt",
+              "DocumentMoniker": "D:\\Modding\\CaptainOfIndustry\\BetterLife_Assemblies\\assets_common.txt",
+              "RelativeDocumentMoniker": "assets_common.txt",
+              "ToolTip": "D:\\Modding\\CaptainOfIndustry\\BetterLife_Assemblies\\assets_common.txt",
+              "RelativeToolTip": "assets_common.txt",
+              "ViewState": "AgIAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAA==",
+              "Icon": "ae27a6b0-e345-4288-96df-5eaf394ee369.003109|",
+              "WhenOpened": "2026-04-25T07:50:34.688Z"
+            },
+            {
+              "$type": "Document",
+              "DocumentIndex": 2,
+              "Title": "config.json",
+              "DocumentMoniker": "D:\\Modding\\CaptainOfIndustry\\BetterLife_Assemblies\\config.json",
+              "RelativeDocumentMoniker": "config.json",
+              "ToolTip": "D:\\Modding\\CaptainOfIndustry\\BetterLife_Assemblies\\config.json",
+              "RelativeToolTip": "config.json",
+              "ViewState": "AgIAAAAAAAAAAAAAAAAAAAgAAAABAAAAAAAAAA==",
+              "Icon": "ae27a6b0-e345-4288-96df-5eaf394ee369.001642|",
+              "WhenOpened": "2026-04-25T07:50:12.454Z",
+              "EditorCaption": ""
+            },
+            {
+              "$type": "Document",
+              "DocumentIndex": 1,
+              "Title": "cusMachineCommandsProcessor.cs",
+              "DocumentMoniker": "D:\\Modding\\CaptainOfIndustry\\BetterLife_Assemblies\\cusMachineCommandsProcessor.cs",
+              "RelativeDocumentMoniker": "cusMachineCommandsProcessor.cs",
+              "ToolTip": "D:\\Modding\\CaptainOfIndustry\\BetterLife_Assemblies\\cusMachineCommandsProcessor.cs",
+              "RelativeToolTip": "cusMachineCommandsProcessor.cs",
+              "ViewState": "AgIAAAMAAAAAAAAAAAAAAA4AAAABAAAAAAAAAA==",
+              "Icon": "ae27a6b0-e345-4288-96df-5eaf394ee369.000738|",
+              "WhenOpened": "2026-04-22T07:36:08.356Z",
+              "EditorCaption": ""
+            },
+            {
+              "$type": "Document",
+              "DocumentIndex": 8,
+              "Title": "customMachineProto.cs",
+              "DocumentMoniker": "D:\\Modding\\CaptainOfIndustry\\BetterLife_Assemblies\\customMachineProto.cs",
+              "RelativeDocumentMoniker": "customMachineProto.cs",
+              "ToolTip": "D:\\Modding\\CaptainOfIndustry\\BetterLife_Assemblies\\customMachineProto.cs",
+              "RelativeToolTip": "customMachineProto.cs",
+              "ViewState": "AgIAAAIBAAAAAAAAAAASwIABAABFAAAAAAAAAA==",
+              "Icon": "ae27a6b0-e345-4288-96df-5eaf394ee369.000738|",
+              "WhenOpened": "2026-04-22T07:36:08.379Z"
+            },
+            {
+              "$type": "Document",
+              "DocumentIndex": 3,
+              "Title": "BetterLife_Assemblies.csproj",
+              "DocumentMoniker": "D:\\Modding\\CaptainOfIndustry\\BetterLife_Assemblies\\BetterLife_Assemblies.csproj",
+              "RelativeDocumentMoniker": "BetterLife_Assemblies.csproj",
+              "ToolTip": "D:\\Modding\\CaptainOfIndustry\\BetterLife_Assemblies\\BetterLife_Assemblies.csproj",
+              "RelativeToolTip": "BetterLife_Assemblies.csproj",
+              "ViewState": "AgIAAE4AAAAAAAAAAADwv3QAAAAoAAAAAAAAAA==",
+              "Icon": "ae27a6b0-e345-4288-96df-5eaf394ee369.000758|",
+              "WhenOpened": "2026-04-22T07:36:08.381Z"
+            },
+            {
+              "$type": "Document",
+              "DocumentIndex": 12,
+              "Title": "IDsResearch.cs",
+              "DocumentMoniker": "D:\\Modding\\CaptainOfIndustry\\BetterLife_Assemblies\\IDs\\IDsResearch.cs",
+              "RelativeDocumentMoniker": "IDs\\IDsResearch.cs",
+              "ToolTip": "D:\\Modding\\CaptainOfIndustry\\BetterLife_Assemblies\\IDs\\IDsResearch.cs",
+              "RelativeToolTip": "IDs\\IDsResearch.cs",
+              "ViewState": "AgIAAAAAAAAAAAAAAADwvwQAAAAVAAAAAAAAAA==",
+              "Icon": "ae27a6b0-e345-4288-96df-5eaf394ee369.000738|",
+              "WhenOpened": "2026-04-22T07:36:08.419Z"
+            },
+            {
+              "$type": "Document",
+              "DocumentIndex": 9,
+              "Title": "IDsRecipes.cs",
+              "DocumentMoniker": "D:\\Modding\\CaptainOfIndustry\\BetterLife_Assemblies\\IDs\\IDsRecipes.cs",
+              "RelativeDocumentMoniker": "IDs\\IDsRecipes.cs",
+              "ToolTip": "D:\\Modding\\CaptainOfIndustry\\BetterLife_Assemblies\\IDs\\IDsRecipes.cs",
+              "RelativeToolTip": "IDs\\IDsRecipes.cs",
+              "ViewState": "AgIAAAwAAAAAAAAAAADwvyMAAABXAAAAAAAAAA==",
+              "Icon": "ae27a6b0-e345-4288-96df-5eaf394ee369.000738|",
+              "WhenOpened": "2026-04-22T07:36:08.421Z"
+            },
+            {
+              "$type": "Document",
+              "DocumentIndex": 10,
+              "Title": "IDsMachines.cs",
+              "DocumentMoniker": "D:\\Modding\\CaptainOfIndustry\\BetterLife_Assemblies\\IDs\\IDsMachines.cs",
+              "RelativeDocumentMoniker": "IDs\\IDsMachines.cs",
+              "ToolTip": "D:\\Modding\\CaptainOfIndustry\\BetterLife_Assemblies\\IDs\\IDsMachines.cs",
+              "RelativeToolTip": "IDs\\IDsMachines.cs",
+              "ViewState": "AgIAAAAAAAAAAAAAAAAAABAAAAAJAAAAAAAAAA==",
+              "Icon": "ae27a6b0-e345-4288-96df-5eaf394ee369.000738|",
+              "WhenOpened": "2026-04-22T07:36:08.422Z"
+            },
+            {
+              "$type": "Document",
+              "DocumentIndex": 7,
+              "Title": "ResearchData.cs",
+              "DocumentMoniker": "D:\\Modding\\CaptainOfIndustry\\BetterLife_Assemblies\\ResearchData.cs",
+              "RelativeDocumentMoniker": "ResearchData.cs",
+              "ToolTip": "D:\\Modding\\CaptainOfIndustry\\BetterLife_Assemblies\\ResearchData.cs",
+              "RelativeToolTip": "ResearchData.cs",
+              "ViewState": "AgIAABwAAAAAAAAAAAAswDsAAAAAAAAAAAAAAA==",
+              "Icon": "ae27a6b0-e345-4288-96df-5eaf394ee369.000738|",
+              "WhenOpened": "2026-04-22T07:36:08.423Z"
+            },
+            {
+              "$type": "Document",
+              "DocumentIndex": 13,
+              "Title": "ColliderToFit.cs",
+              "DocumentMoniker": "D:\\Modding\\CaptainOfIndustry\\BetterLife_Assemblies\\Assets\\Editor\\ColliderToFit.cs",
+              "RelativeDocumentMoniker": "Assets\\Editor\\ColliderToFit.cs",
+              "ToolTip": "D:\\Modding\\CaptainOfIndustry\\BetterLife_Assemblies\\Assets\\Editor\\ColliderToFit.cs",
+              "RelativeToolTip": "Assets\\Editor\\ColliderToFit.cs",
+              "ViewState": "AgIAAAAAAAAAAAAAAAAAAAYAAAACAAAAAAAAAA==",
+              "Icon": "ae27a6b0-e345-4288-96df-5eaf394ee369.000738|",
+              "WhenOpened": "2026-04-22T07:36:08.424Z"
+            },
+            {
+              "$type": "Document",
+              "DocumentIndex": 11,
+              "Title": "IDsBuildings.cs",
+              "DocumentMoniker": "D:\\Modding\\CaptainOfIndustry\\BetterLife_Assemblies\\IDs\\IDsBuildings.cs",
+              "RelativeDocumentMoniker": "IDs\\IDsBuildings.cs",
+              "ToolTip": "D:\\Modding\\CaptainOfIndustry\\BetterLife_Assemblies\\IDs\\IDsBuildings.cs",
+              "RelativeToolTip": "IDs\\IDsBuildings.cs",
+              "ViewState": "AgIAAAAAAAAAAAAAAADwvxAAAAAVAAAAAAAAAA==",
+              "Icon": "ae27a6b0-e345-4288-96df-5eaf394ee369.000738|",
+              "WhenOpened": "2026-04-22T07:36:08.426Z"
+            },
+            {
+              "$type": "Document",
+              "DocumentIndex": 5,
+              "Title": "BetterLifesRecipeDef.cs",
+              "DocumentMoniker": "D:\\Modding\\CaptainOfIndustry\\BetterLife_Assemblies\\BetterLifesRecipeDef.cs",
+              "RelativeDocumentMoniker": "BetterLifesRecipeDef.cs",
+              "ToolTip": "D:\\Modding\\CaptainOfIndustry\\BetterLife_Assemblies\\BetterLifesRecipeDef.cs",
+              "RelativeToolTip": "BetterLifesRecipeDef.cs",
+              "ViewState": "AgIAALMAAAAAAAAAAAAAAGMAAABCAAAAAAAAAA==",
+              "Icon": "ae27a6b0-e345-4288-96df-5eaf394ee369.000738|",
+              "WhenOpened": "2026-04-22T07:36:08.427Z"
+            },
+            {
+              "$type": "Document",
+              "DocumentIndex": 6,
+              "Title": "BetterLifesMachineDef.cs",
+              "DocumentMoniker": "D:\\Modding\\CaptainOfIndustry\\BetterLife_Assemblies\\BetterLifesMachineDef.cs",
+              "RelativeDocumentMoniker": "BetterLifesMachineDef.cs",
+              "ToolTip": "D:\\Modding\\CaptainOfIndustry\\BetterLife_Assemblies\\BetterLifesMachineDef.cs",
+              "RelativeToolTip": "BetterLifesMachineDef.cs",
+              "ViewState": "AgIAADAAAAAAAAAAAAAAAC0AAAAgAAAAAAAAAA==",
+              "Icon": "ae27a6b0-e345-4288-96df-5eaf394ee369.000738|",
+              "WhenOpened": "2026-04-22T07:36:08.449Z"
+            },
+            {
+              "$type": "Document",
+              "DocumentIndex": 0,
+              "Title": "BetterLifeExt.cs",
+              "DocumentMoniker": "D:\\Modding\\CaptainOfIndustry\\BetterLife_Assemblies\\BetterLifeExt.cs",
+              "RelativeDocumentMoniker": "BetterLifeExt.cs",
+              "ToolTip": "D:\\Modding\\CaptainOfIndustry\\BetterLife_Assemblies\\BetterLifeExt.cs",
+              "RelativeToolTip": "BetterLifeExt.cs",
+              "ViewState": "AgIAAE8AAAAAAAAAAAAkwGoAAAAAAAAAAAAAAA==",
+              "Icon": "ae27a6b0-e345-4288-96df-5eaf394ee369.000738|",
+              "WhenOpened": "2026-04-22T07:36:08.452Z",
+              "EditorCaption": ""
+            }
+          ]
+        }
+      ]
+    }
+  ]
+}

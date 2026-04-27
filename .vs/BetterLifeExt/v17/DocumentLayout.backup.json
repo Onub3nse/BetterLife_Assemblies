@@ -1,0 +1,227 @@
+{
+  "Version": 1,
+  "WorkspaceRootPath": "D:\\Modding\\CaptainOfIndustry\\Captain-of-industry-modding\\src\\COI-BetterLifeExt\\",
+  "Documents": [
+    {
+      "AbsoluteMoniker": "D:0:0:{5943759D-2613-4C80-BD3A-29FF36D2FDF5}|BetterLifeExt.csproj|d:\\modding\\captainofindustry\\captain-of-industry-modding\\src\\coi-betterlifeext\\researchdata.cs||{A6C744A8-0E4A-4FC6-886A-064283054674}",
+      "RelativeMoniker": "D:0:0:{5943759D-2613-4C80-BD3A-29FF36D2FDF5}|BetterLifeExt.csproj|solutionrelative:researchdata.cs||{A6C744A8-0E4A-4FC6-886A-064283054674}"
+    },
+    {
+      "AbsoluteMoniker": "D:0:0:{5943759D-2613-4C80-BD3A-29FF36D2FDF5}|BetterLifeExt.csproj|d:\\modding\\captainofindustry\\captain-of-industry-modding\\src\\coi-betterlifeext\\betterlifeext.cs||{A6C744A8-0E4A-4FC6-886A-064283054674}",
+      "RelativeMoniker": "D:0:0:{5943759D-2613-4C80-BD3A-29FF36D2FDF5}|BetterLifeExt.csproj|solutionrelative:betterlifeext.cs||{A6C744A8-0E4A-4FC6-886A-064283054674}"
+    },
+    {
+      "AbsoluteMoniker": "D:0:0:{5943759D-2613-4C80-BD3A-29FF36D2FDF5}|BetterLifeExt.csproj|d:\\modding\\captainofindustry\\captain-of-industry-modding\\src\\coi-betterlifeext\\betterlifesrecipedef.cs||{A6C744A8-0E4A-4FC6-886A-064283054674}",
+      "RelativeMoniker": "D:0:0:{5943759D-2613-4C80-BD3A-29FF36D2FDF5}|BetterLifeExt.csproj|solutionrelative:betterlifesrecipedef.cs||{A6C744A8-0E4A-4FC6-886A-064283054674}"
+    },
+    {
+      "AbsoluteMoniker": "D:0:0:{5943759D-2613-4C80-BD3A-29FF36D2FDF5}|BetterLifeExt.csproj|d:\\modding\\captainofindustry\\captain-of-industry-modding\\src\\coi-betterlifeext\\betterlifesext.cs||{A6C744A8-0E4A-4FC6-886A-064283054674}",
+      "RelativeMoniker": "D:0:0:{5943759D-2613-4C80-BD3A-29FF36D2FDF5}|BetterLifeExt.csproj|solutionrelative:betterlifesext.cs||{A6C744A8-0E4A-4FC6-886A-064283054674}"
+    },
+    {
+      "AbsoluteMoniker": "D:0:0:{5943759D-2613-4C80-BD3A-29FF36D2FDF5}|BetterLifeExt.csproj|d:\\modding\\captainofindustry\\captain-of-industry-modding\\src\\coi-betterlifeext\\ids\\idstoolbars.cs||{A6C744A8-0E4A-4FC6-886A-064283054674}",
+      "RelativeMoniker": "D:0:0:{5943759D-2613-4C80-BD3A-29FF36D2FDF5}|BetterLifeExt.csproj|solutionrelative:ids\\idstoolbars.cs||{A6C744A8-0E4A-4FC6-886A-064283054674}"
+    },
+    {
+      "AbsoluteMoniker": "D:0:0:{5943759D-2613-4C80-BD3A-29FF36D2FDF5}|BetterLifeExt.csproj|d:\\modding\\captainofindustry\\captain-of-industry-modding\\src\\coi-betterlifeext\\betterlifeext.csproj||{04B8AB82-A572-4FEF-95CE-5222444B6B64}|",
+      "RelativeMoniker": "D:0:0:{5943759D-2613-4C80-BD3A-29FF36D2FDF5}|BetterLifeExt.csproj|solutionrelative:betterlifeext.csproj||{04B8AB82-A572-4FEF-95CE-5222444B6B64}|"
+    },
+    {
+      "AbsoluteMoniker": "D:0:0:{5943759D-2613-4C80-BD3A-29FF36D2FDF5}|BetterLifeExt.csproj|d:\\modding\\captainofindustry\\captain-of-industry-modding\\src\\coi-betterlifeext\\betterlifesmachinedef.cs||{A6C744A8-0E4A-4FC6-886A-064283054674}",
+      "RelativeMoniker": "D:0:0:{5943759D-2613-4C80-BD3A-29FF36D2FDF5}|BetterLifeExt.csproj|solutionrelative:betterlifesmachinedef.cs||{A6C744A8-0E4A-4FC6-886A-064283054674}"
+    },
+    {
+      "AbsoluteMoniker": "D:0:0:{5943759D-2613-4C80-BD3A-29FF36D2FDF5}|BetterLifeExt.csproj|d:\\modding\\captainofindustry\\captain-of-industry-modding\\src\\coi-betterlifeext\\ids\\idsbuildings.cs||{A6C744A8-0E4A-4FC6-886A-064283054674}",
+      "RelativeMoniker": "D:0:0:{5943759D-2613-4C80-BD3A-29FF36D2FDF5}|BetterLifeExt.csproj|solutionrelative:ids\\idsbuildings.cs||{A6C744A8-0E4A-4FC6-886A-064283054674}"
+    },
+    {
+      "AbsoluteMoniker": "D:0:0:{5943759D-2613-4C80-BD3A-29FF36D2FDF5}|BetterLifeExt.csproj|d:\\modding\\captainofindustry\\captain-of-industry-modding\\src\\coi-betterlifeext\\ids\\idsresearch.cs||{A6C744A8-0E4A-4FC6-886A-064283054674}",
+      "RelativeMoniker": "D:0:0:{5943759D-2613-4C80-BD3A-29FF36D2FDF5}|BetterLifeExt.csproj|solutionrelative:ids\\idsresearch.cs||{A6C744A8-0E4A-4FC6-886A-064283054674}"
+    },
+    {
+      "AbsoluteMoniker": "D:0:0:{5943759D-2613-4C80-BD3A-29FF36D2FDF5}|BetterLifeExt.csproj|d:\\modding\\captainofindustry\\captain-of-industry-modding\\src\\coi-betterlifeext\\ids\\idsrecipes.cs||{A6C744A8-0E4A-4FC6-886A-064283054674}",
+      "RelativeMoniker": "D:0:0:{5943759D-2613-4C80-BD3A-29FF36D2FDF5}|BetterLifeExt.csproj|solutionrelative:ids\\idsrecipes.cs||{A6C744A8-0E4A-4FC6-886A-064283054674}"
+    },
+    {
+      "AbsoluteMoniker": "D:0:0:{5943759D-2613-4C80-BD3A-29FF36D2FDF5}|BetterLifeExt.csproj|d:\\modding\\captainofindustry\\captain-of-industry-modding\\src\\coi-betterlifeext\\ids\\idsmachines.cs||{A6C744A8-0E4A-4FC6-886A-064283054674}",
+      "RelativeMoniker": "D:0:0:{5943759D-2613-4C80-BD3A-29FF36D2FDF5}|BetterLifeExt.csproj|solutionrelative:ids\\idsmachines.cs||{A6C744A8-0E4A-4FC6-886A-064283054674}"
+    },
+    {
+      "AbsoluteMoniker": "D:0:0:{5943759D-2613-4C80-BD3A-29FF36D2FDF5}|BetterLifeExt.csproj|d:\\modding\\captainofindustry\\captain-of-industry-modding\\src\\coi-betterlifeext\\blcosts.cs||{A6C744A8-0E4A-4FC6-886A-064283054674}",
+      "RelativeMoniker": "D:0:0:{5943759D-2613-4C80-BD3A-29FF36D2FDF5}|BetterLifeExt.csproj|solutionrelative:blcosts.cs||{A6C744A8-0E4A-4FC6-886A-064283054674}"
+    }
+  ],
+  "DocumentGroupContainers": [
+    {
+      "Orientation": 0,
+      "VerticalTabListWidth": 157,
+      "DocumentGroups": [
+        {
+          "DockedWidth": 200,
+          "SelectedChildIndex": 7,
+          "Children": [
+            {
+              "$type": "Document",
+              "DocumentIndex": 5,
+              "Title": "BetterLifeExt",
+              "DocumentMoniker": "D:\\Modding\\CaptainOfIndustry\\Captain-of-industry-modding\\src\\COI-BetterLifeExt\\BetterLifeExt.csproj",
+              "RelativeDocumentMoniker": "BetterLifeExt.csproj",
+              "ToolTip": "D:\\Modding\\CaptainOfIndustry\\Captain-of-industry-modding\\src\\COI-BetterLifeExt\\BetterLifeExt.csproj",
+              "RelativeToolTip": "BetterLifeExt.csproj",
+              "Icon": "ae27a6b0-e345-4288-96df-5eaf394ee369.000758|",
+              "WhenOpened": "2025-05-26T15:23:19.916Z",
+              "EditorCaption": ""
+            },
+            {
+              "$type": "Document",
+              "DocumentIndex": 4,
+              "Title": "IDsToolbars.cs",
+              "DocumentMoniker": "D:\\Modding\\CaptainOfIndustry\\Captain-of-industry-modding\\src\\COI-BetterLifeExt\\IDs\\IDsToolbars.cs",
+              "RelativeDocumentMoniker": "IDs\\IDsToolbars.cs",
+              "ToolTip": "D:\\Modding\\CaptainOfIndustry\\Captain-of-industry-modding\\src\\COI-BetterLifeExt\\IDs\\IDsToolbars.cs",
+              "RelativeToolTip": "IDs\\IDsToolbars.cs",
+              "ViewState": "AgIAAAAAAAAAAAAAAAAAAAoAAAAAAAAAAAAAAA==",
+              "Icon": "ae27a6b0-e345-4288-96df-5eaf394ee369.000738|",
+              "WhenOpened": "2025-05-26T15:08:32.361Z",
+              "EditorCaption": ""
+            },
+            {
+              "$type": "Document",
+              "DocumentIndex": 7,
+              "Title": "IDsBuildings.cs",
+              "DocumentMoniker": "D:\\Modding\\CaptainOfIndustry\\Captain-of-industry-modding\\src\\COI-BetterLifeExt\\IDs\\IDsBuildings.cs",
+              "RelativeDocumentMoniker": "IDs\\IDsBuildings.cs",
+              "ToolTip": "D:\\Modding\\CaptainOfIndustry\\Captain-of-industry-modding\\src\\COI-BetterLifeExt\\IDs\\IDsBuildings.cs",
+              "RelativeToolTip": "IDs\\IDsBuildings.cs",
+              "ViewState": "AgIAAAsAAAAAAAAAAAAowBQAAAAAAAAAAAAAAA==",
+              "Icon": "ae27a6b0-e345-4288-96df-5eaf394ee369.000738|",
+              "WhenOpened": "2025-05-26T15:07:14Z",
+              "EditorCaption": ""
+            },
+            {
+              "$type": "Document",
+              "DocumentIndex": 8,
+              "Title": "IDsResearch.cs",
+              "DocumentMoniker": "D:\\Modding\\CaptainOfIndustry\\Captain-of-industry-modding\\src\\COI-BetterLifeExt\\IDs\\IDsResearch.cs",
+              "RelativeDocumentMoniker": "IDs\\IDsResearch.cs",
+              "ToolTip": "D:\\Modding\\CaptainOfIndustry\\Captain-of-industry-modding\\src\\COI-BetterLifeExt\\IDs\\IDsResearch.cs",
+              "RelativeToolTip": "IDs\\IDsResearch.cs",
+              "ViewState": "AgIAAAAAAAAAAAAAAAAAAAYAAAAAAAAAAAAAAA==",
+              "Icon": "ae27a6b0-e345-4288-96df-5eaf394ee369.000738|",
+              "WhenOpened": "2025-05-26T14:57:40.591Z",
+              "EditorCaption": ""
+            },
+            {
+              "$type": "Document",
+              "DocumentIndex": 9,
+              "Title": "IDsRecipes.cs",
+              "DocumentMoniker": "D:\\Modding\\CaptainOfIndustry\\Captain-of-industry-modding\\src\\COI-BetterLifeExt\\IDs\\IDsRecipes.cs",
+              "RelativeDocumentMoniker": "IDs\\IDsRecipes.cs",
+              "ToolTip": "D:\\Modding\\CaptainOfIndustry\\Captain-of-industry-modding\\src\\COI-BetterLifeExt\\IDs\\IDsRecipes.cs",
+              "RelativeToolTip": "IDs\\IDsRecipes.cs",
+              "ViewState": "AgIAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAA==",
+              "Icon": "ae27a6b0-e345-4288-96df-5eaf394ee369.000738|",
+              "WhenOpened": "2025-05-26T14:28:13.496Z",
+              "EditorCaption": ""
+            },
+            {
+              "$type": "Bookmark",
+              "Name": "ST:0:0:{aa2115a1-9712-457b-9047-dbb71ca2cdd2}"
+            },
+            {
+              "$type": "Document",
+              "DocumentIndex": 10,
+              "Title": "IDsMachines.cs",
+              "DocumentMoniker": "D:\\Modding\\CaptainOfIndustry\\Captain-of-industry-modding\\src\\COI-BetterLifeExt\\IDs\\IDsMachines.cs",
+              "RelativeDocumentMoniker": "IDs\\IDsMachines.cs",
+              "ToolTip": "D:\\Modding\\CaptainOfIndustry\\Captain-of-industry-modding\\src\\COI-BetterLifeExt\\IDs\\IDsMachines.cs",
+              "RelativeToolTip": "IDs\\IDsMachines.cs",
+              "ViewState": "AgIAAAAAAAAAAAAAAAAAAAQAAAABAAAAAAAAAA==",
+              "Icon": "ae27a6b0-e345-4288-96df-5eaf394ee369.000738|",
+              "WhenOpened": "2025-05-26T14:29:49.736Z",
+              "EditorCaption": ""
+            },
+            {
+              "$type": "Document",
+              "DocumentIndex": 0,
+              "Title": "ResearchData.cs",
+              "DocumentMoniker": "D:\\Modding\\CaptainOfIndustry\\Captain-of-industry-modding\\src\\COI-BetterLifeExt\\ResearchData.cs",
+              "RelativeDocumentMoniker": "ResearchData.cs",
+              "ToolTip": "D:\\Modding\\CaptainOfIndustry\\Captain-of-industry-modding\\src\\COI-BetterLifeExt\\ResearchData.cs",
+              "RelativeToolTip": "ResearchData.cs",
+              "ViewState": "AgIAAAwAAAAAAAAAAADwvzsAAAA4AAAAAAAAAA==",
+              "Icon": "ae27a6b0-e345-4288-96df-5eaf394ee369.000738|",
+              "WhenOpened": "2025-05-26T14:23:10.381Z",
+              "EditorCaption": ""
+            },
+            {
+              "$type": "Document",
+              "DocumentIndex": 11,
+              "Title": "BLCosts.cs",
+              "DocumentMoniker": "D:\\Modding\\CaptainOfIndustry\\Captain-of-industry-modding\\src\\COI-BetterLifeExt\\BLCosts.cs",
+              "RelativeDocumentMoniker": "BLCosts.cs",
+              "ToolTip": "D:\\Modding\\CaptainOfIndustry\\Captain-of-industry-modding\\src\\COI-BetterLifeExt\\BLCosts.cs",
+              "RelativeToolTip": "BLCosts.cs",
+              "ViewState": "AgIAAAAAAAAAAAAAAAAAAAkAAAAeAAAAAAAAAA==",
+              "Icon": "ae27a6b0-e345-4288-96df-5eaf394ee369.000738|",
+              "WhenOpened": "2025-05-26T14:23:05.155Z",
+              "EditorCaption": ""
+            },
+            {
+              "$type": "Document",
+              "DocumentIndex": 2,
+              "Title": "BetterLifesRecipeDef.cs",
+              "DocumentMoniker": "D:\\Modding\\CaptainOfIndustry\\Captain-of-industry-modding\\src\\COI-BetterLifeExt\\BetterLifesRecipeDef.cs",
+              "RelativeDocumentMoniker": "BetterLifesRecipeDef.cs",
+              "ToolTip": "D:\\Modding\\CaptainOfIndustry\\Captain-of-industry-modding\\src\\COI-BetterLifeExt\\BetterLifesRecipeDef.cs",
+              "RelativeToolTip": "BetterLifesRecipeDef.cs",
+              "ViewState": "AgIAAAAAAAAAAAAAAAAAAAUAAAAeAAAAAAAAAA==",
+              "Icon": "ae27a6b0-e345-4288-96df-5eaf394ee369.000738|",
+              "WhenOpened": "2025-05-26T10:03:17.728Z",
+              "EditorCaption": ""
+            },
+            {
+              "$type": "Document",
+              "DocumentIndex": 6,
+              "Title": "BetterLifesMachineDef.cs",
+              "DocumentMoniker": "D:\\Modding\\CaptainOfIndustry\\Captain-of-industry-modding\\src\\COI-BetterLifeExt\\BetterLifesMachineDef.cs",
+              "RelativeDocumentMoniker": "BetterLifesMachineDef.cs",
+              "ToolTip": "D:\\Modding\\CaptainOfIndustry\\Captain-of-industry-modding\\src\\COI-BetterLifeExt\\BetterLifesMachineDef.cs",
+              "RelativeToolTip": "BetterLifesMachineDef.cs",
+              "ViewState": "AgIAACoAAAAAAAAAAAAQwC8AAAAAAAAAAAAAAA==",
+              "Icon": "ae27a6b0-e345-4288-96df-5eaf394ee369.000738|",
+              "WhenOpened": "2025-05-26T10:01:07.501Z",
+              "EditorCaption": ""
+            },
+            {
+              "$type": "Document",
+              "DocumentIndex": 3,
+              "Title": "BetterLifesExt.cs",
+              "DocumentMoniker": "D:\\Modding\\CaptainOfIndustry\\Captain-of-industry-modding\\src\\COI-BetterLifeExt\\BetterLifesExt.cs",
+              "RelativeDocumentMoniker": "BetterLifesExt.cs",
+              "ToolTip": "D:\\Modding\\CaptainOfIndustry\\Captain-of-industry-modding\\src\\COI-BetterLifeExt\\BetterLifesExt.cs",
+              "RelativeToolTip": "BetterLifesExt.cs",
+              "ViewState": "AgIAABwAAAAAAAAAAAAAwEQAAAABAAAAAAAAAA==",
+              "Icon": "ae27a6b0-e345-4288-96df-5eaf394ee369.000738|",
+              "WhenOpened": "2024-07-11T20:14:42.062Z",
+              "EditorCaption": ""
+            },
+            {
+              "$type": "Document",
+              "DocumentIndex": 1,
+              "Title": "BetterLifeExt.cs",
+              "DocumentMoniker": "D:\\Modding\\CaptainOfIndustry\\Captain-of-industry-modding\\src\\COI-BetterLifeExt\\BetterLifeExt.cs",
+              "RelativeDocumentMoniker": "BetterLifeExt.cs",
+              "ToolTip": "D:\\Modding\\CaptainOfIndustry\\Captain-of-industry-modding\\src\\COI-BetterLifeExt\\BetterLifeExt.cs",
+              "RelativeToolTip": "BetterLifeExt.cs",
+              "ViewState": "AgIAAAAAAAAAAAAAAAAAACoAAAAzAAAAAAAAAA==",
+              "Icon": "ae27a6b0-e345-4288-96df-5eaf394ee369.000738|",
+              "WhenOpened": "2024-05-27T09:40:00.222Z",
+              "EditorCaption": ""
+            }
+          ]
+        }
+      ]
+    }
+  ]
+}

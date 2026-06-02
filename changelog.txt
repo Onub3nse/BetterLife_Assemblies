@@ -1,0 +1,8 @@
+BetterLife - Assemblies
+=======================
+
+
+	-	1.0		Initial release, stable.
+	-	1.0.1	Added PCB recipe - Does not need glass.
+				Added Household Goods - Only Wood and Iron needed.
+				Added CopperScrap to Copper.

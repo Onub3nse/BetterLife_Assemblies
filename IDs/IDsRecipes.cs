@@ -32,6 +32,7 @@ public partial class BetterLIDs
         public static readonly RecipeID easyRailParts = Ids.Recipes.CreateId("easyRailParts");
         public static readonly RecipeID EasyCement = Ids.Recipes.CreateId("EasyCement");
         public static readonly RecipeID EasyCement2 = Ids.Recipes.CreateId("EasyCement2");
+        public static readonly RecipeID EasyCement3 = Ids.Recipes.CreateId("EasyCement3");
         public static readonly RecipeID SulfurBurn = Ids.Recipes.CreateId("SulfurBurn");
         public static readonly RecipeID ConstructionParts3C = Ids.Recipes.CreateId("ConstructionParts3C");
         public static readonly RecipeID ConstructionParts2C = Ids.Recipes.CreateId("ConstructionParts2C");
@@ -54,6 +55,7 @@ public partial class BetterLIDs
         public static readonly RecipeID EasyFuel = Ids.Recipes.CreateId("EasyFuel");
         public static readonly RecipeID RLab1 = Ids.Recipes.CreateId("rLab1");
         public static readonly RecipeID ScrapToIron = Ids.Recipes.CreateId("scrapIron");
+        public static readonly RecipeID ScrapToCopper = Ids.Recipes.CreateId("scrapCopper");
         public static readonly RecipeID SourWater1 = Ids.Recipes.CreateId("Sourwater1");
         public static readonly RecipeID Maintenance1 = Ids.Recipes.CreateId("Maintenance1");
         public static readonly RecipeID Energy600mw = Ids.Recipes.CreateId("Energy600");
@@ -70,6 +72,10 @@ public partial class BetterLIDs
         public static readonly RecipeID Cement1 = Ids.Recipes.CreateId("Cement1");
         public static readonly RecipeID Ethanol1 = Ids.Recipes.CreateId("Ethanol1");
         public static readonly RecipeID Exhaust1 = Ids.Recipes.CreateId("Exaust1");
+        public static readonly RecipeID Exhaust2 = Ids.Recipes.CreateId("Exaust2");
+        public static readonly RecipeID SlagToIronScrap = Ids.Recipes.CreateId("SlagToIronScrap");
+        public static readonly RecipeID HouseHoldGoods1 = Ids.Recipes.CreateId("HouseHoldGoods1");
+        public static readonly RecipeID PCB1 = Ids.Recipes.CreateId("PCB1");
     }
 
 

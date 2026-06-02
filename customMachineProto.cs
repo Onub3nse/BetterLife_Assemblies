@@ -51,7 +51,7 @@ namespace BetterLife_Assemblies
         public readonly int? EmissionWhenRunning;
         public readonly bool DisableLogisticsByDefault;
 
-        public override Type EntityType => typeof(Machine);
+        public override Type EntityType => typeof(MyMachineEntity);
 
         public Electricity ElectricityConsumed => this.ConsumedPowerPerTick;
 

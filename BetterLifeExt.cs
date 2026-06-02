@@ -80,7 +80,7 @@ namespace BetterLife_Assemblies
             }
         }
 
-
+         
         public bool IsUiOnly => false;
         public bool GameWasLoaded;
 
@@ -101,7 +101,7 @@ namespace BetterLife_Assemblies
                 registrator.PrototypesDb.GetOrThrow<OreSortingPlantProto>(Ids.Buildings.OreSortingPlantT1);
 
 
-            Quantity newOreCapacity = new Quantity(this.JsonConfig.GetInt("oresorter_capacity"));
+            Quantity newOreCapacity = new Quantity(this.JsonConfig.GetInt("oresorter_capacity",300));
 
 
 
@@ -110,7 +110,7 @@ namespace BetterLife_Assemblies
 
         }
         public void RegisterDependencies(DependencyResolverBuilder depBuilder, ProtosDb protosDb, bool gameWasLoaded)
-        {
+        { 
         }
 
 

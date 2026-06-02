@@ -9,12 +9,6 @@
             Whether a test factory will be built on the game start.
             </summary>
         </member>
-        <member name="F:Mafi.Base.Prototypes.Buildings.Billboard.OnColorChanged">
-            <summary>
-            Invoked when color changes via <see cref="M:Mafi.Base.Prototypes.Buildings.Billboard.SetColor(Mafi.ColorRgba,Mafi.ColorRgba)"/>. Used by the rendering side to refresh.
-            The parameter is the billboard's <see cref="P:Mafi.Core.Entities.Entity.Id"/>.
-            </summary>
-        </member>
         <member name="P:Mafi.Base.Prototypes.Buildings.Billboard.HasCustomColor">
             <summary>
             Whether this billboard has custom colors set by the player.
@@ -64,6 +58,11 @@
             <summary>
             Billboards whose colors changed since the last sync. Read and cleared by the rendering side
             on the main thread during sync update.
+            </summary>
+        </member>
+        <member name="M:Mafi.Base.Prototypes.Buildings.BillboardsManager.NotifyColorChanged(Mafi.Core.EntityId)">
+            <summary>
+            Called by <see cref="M:Mafi.Base.Prototypes.Buildings.Billboard.SetColor(Mafi.ColorRgba,Mafi.ColorRgba)"/> to mark the billboard for a renderer refresh.
             </summary>
         </member>
         <member name="M:Mafi.Base.Prototypes.Buildings.BillboardsManager.DrainPendingColorChanges(Mafi.Collections.Lyst{Mafi.Core.EntityId})">

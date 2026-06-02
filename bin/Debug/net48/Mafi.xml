@@ -1706,11 +1706,11 @@
         <member name="M:Mafi.Collections.KeyedSwapLyst`3.GetActiveBackingArray(System.Int32@)">
             <summary>Returns the active array. Only the first <paramref name="count"/> elements are valid.</summary>
         </member>
-        <member name="M:Mafi.Collections.KeyedSwapLyst`3.Add(`0,`1,`2)">
-            <summary>Adds a key with its value and initial swap data. Throws if the key already exists.</summary>
+        <member name="M:Mafi.Collections.KeyedSwapLyst`3.Add(`0,`1,`2,`2)">
+            <summary>Adds a key with its value and initial swap data for both buffers. Throws if the key already exists.</summary>
         </member>
-        <member name="M:Mafi.Collections.KeyedSwapLyst`3.TryAdd(`0,`1,`2)">
-            <summary>Tries to add a key with its value and initial swap data. Returns false if the key already exists.</summary>
+        <member name="M:Mafi.Collections.KeyedSwapLyst`3.TryAdd(`0,`1,`2,`2)">
+            <summary>Tries to add a key with its value and initial swap data for both buffers. Returns false if the key already exists.</summary>
         </member>
         <member name="M:Mafi.Collections.KeyedSwapLyst`3.TryRemove(`0)">
             <summary>
@@ -4219,6 +4219,22 @@
             type definitions.
             </summary>
         </member>
+        <member name="P:Mafi.DependencyResolver.ResolvedObjects">
+            <summary>
+            Instances the resolver constructed itself via DI from a registered impl type, in instantiation order.
+            Excludes <see cref="T:Mafi.IMultiInstanceDependency"/> instances (which live in <see cref="F:Mafi.DependencyResolver.m_multiInstanceDeps"/>)
+            and pre-registered instances supplied via <c>RegisterInstance(...)</c> (which sit only in the
+            by-real/by-registered-type maps and never reach this list). Use <see cref="M:Mafi.DependencyResolver.GetAllResolvedObjects"/> when
+            you need the full set including multi-instance impls.
+            </summary>
+        </member>
+        <member name="M:Mafi.DependencyResolver.GetAllResolvedObjects">
+            <summary>
+            Returns all objects the resolver tracks, including <see cref="T:Mafi.IMultiInstanceDependency"/> instances. When
+            no multi-instance impls are registered, returns <see cref="P:Mafi.DependencyResolver.ResolvedObjects"/> directly. Otherwise
+            allocates a fresh list - prefer <see cref="P:Mafi.DependencyResolver.ResolvedObjects"/> if you only need the lazy-resolved set.
+            </summary>
+        </member>
         <member name="F:Mafi.DependencyResolver.m_resolvedInstancesByRegisteredType">
             <summary>
             Already instantiated dependencies ready for resolving. Key is a type of dependency, usually some interface.
@@ -4231,9 +4247,18 @@
             instance (not its interface).
             </summary>
         </member>
+        <member name="F:Mafi.DependencyResolver.m_multiInstanceDeps">
+            <summary>
+            Flat list of <see cref="T:Mafi.IMultiInstanceDependency"/> instances, deduped by reference at registration.
+            <see cref="M:Mafi.DependencyResolver.ResolveAll``1"/> filters by <c>IsAssignableFrom</c>; see
+            <see cref="T:Mafi.IMultiInstanceDependency"/> for the full design.
+            </summary>
+        </member>
         <member name="P:Mafi.DependencyResolver.AllResolvedInstances">
             <summary>
-            Returns all resolved objects so far.
+            Returns all resolved objects so far, keyed by their real (implementation) type. Excludes
+            <see cref="T:Mafi.IMultiInstanceDependency"/> instances - those live in a separate flat list. Use
+            <see cref="M:Mafi.DependencyResolver.GetAllResolvedObjects"/> if you need multi-instance impls included.
             </summary>
         </member>
         <member name="F:Mafi.DependencyResolver.m_customResolveFuncs">
@@ -4256,7 +4281,7 @@
             Cached factory functions based on the argument types.
             </summary>
         </member>
-        <member name="M:Mafi.DependencyResolver.#ctor(System.Collections.Generic.IReadOnlyDictionary{System.Type,Mafi.Collections.Lyst{System.Type}},System.Collections.Generic.IReadOnlyDictionary{System.Type,System.Type},System.Collections.Generic.IReadOnlyDictionary{System.Type,Mafi.Collections.Lyst{System.Type}},Mafi.Collections.Dict{System.Type,System.Object},Mafi.Collections.Dict{System.Type,System.Object},Mafi.Collections.Lyst{System.Object},Mafi.Collections.Dict{System.Type,System.Int32},Mafi.Collections.ImmutableCollections.ImmutableArray{System.Func{System.Reflection.ParameterInfo,Mafi.Option{System.Object}}},System.Predicate{System.Type})">
+        <member name="M:Mafi.DependencyResolver.#ctor(System.Collections.Generic.IReadOnlyDictionary{System.Type,Mafi.Collections.Lyst{System.Type}},System.Collections.Generic.IReadOnlyDictionary{System.Type,System.Type},System.Collections.Generic.IReadOnlyDictionary{System.Type,Mafi.Collections.Lyst{System.Type}},Mafi.Collections.Dict{System.Type,System.Object},Mafi.Collections.Dict{System.Type,System.Object},Mafi.Collections.Lyst{System.Object},Mafi.Collections.Lyst{System.Object},Mafi.Collections.Dict{System.Type,System.Int32},Mafi.Collections.ImmutableCollections.ImmutableArray{System.Func{System.Reflection.ParameterInfo,Mafi.Option{System.Object}}},System.Predicate{System.Type})">
             <summary>
             Creates dependency resolver from given data. This should be done by <see cref="T:Mafi.DependencyResolverBuilder"/>
             class. This constructor takes given instances so make sure the caller is surrendering them!
@@ -4439,6 +4464,19 @@
             Used for hot reload to pass newly loaded types to the resolver.
             </summary>
         </member>
+        <member name="M:Mafi.DependencyResolver.ReplaceResolvedInstance(System.Object,System.Object)">
+            <summary>
+            Re-binds every registered type currently mapped to <paramref name="oldImplementation"/>
+            (concrete class plus every interface registered via <c>AsAllInterfaces</c>) to
+            <paramref name="newImplementation"/>, and updates the by-real-type lookup accordingly.
+            </summary>
+            <remarks>
+            Intended for repair paths that need to substitute a deserialized instance after the
+            resolver was already built (e.g. swapping a no-op simulator deserialized from a legacy
+            broken save with a real one). Use sparingly: most code should rely on the normal
+            register-then-build flow.
+            </remarks>
+        </member>
         <member name="T:Mafi.DependencyResolver.FactoryFuncKey">
             <summary>
             Key for hierarchy function factories with one argument.
@@ -4476,6 +4514,16 @@
         <member name="F:Mafi.DependencyResolverBuilder.m_instancesByRealType">
             <summary>
             Already instantiated dependencies. Key is actual type of the dependency instance.
+            </summary>
+        </member>
+        <member name="F:Mafi.DependencyResolverBuilder.m_multiInstanceDeps">
+            <summary>
+            Flat list of <see cref="T:Mafi.IMultiInstanceDependency"/> instances. Multiple instances of the same impl type
+            can coexist; <see cref="F:Mafi.DependencyResolverBuilder.m_multiInstanceDepsSet"/> dedups identical references so a single instance lands
+            here exactly once regardless of which chain method (or how many) registered it. Kept entirely separate
+            from <see cref="F:Mafi.DependencyResolverBuilder.m_dependencyRegistrations"/>, <see cref="F:Mafi.DependencyResolverBuilder.m_instancesByRegisteredType"/>, and
+            <see cref="F:Mafi.DependencyResolverBuilder.m_instancesByRealType"/>; <see cref="M:Mafi.DependencyResolver.ResolveAll``1"/> filters this list by
+            <c>IsAssignableFrom</c> alongside the regular impls.
             </summary>
         </member>
         <member name="F:Mafi.DependencyResolverBuilder.m_registeredGlobalDeps">
@@ -4700,6 +4748,30 @@
             <typeparam name="TArg1">Type of the first argument.</typeparam>
             <typeparam name="TArg2">Type of the second argument.</typeparam>
             <typeparam name="TResult">Type of result, common for all factory methods in one group.</typeparam>
+        </member>
+        <member name="T:Mafi.IMultiInstanceDependency">
+             <summary>
+             Marker for impl types that may have multiple instances registered under the same dependency type. Without
+             this marker, a second registration of the same impl type silently last-wins on both the by-registered-type
+             and by-real-type maps (only the inner type-registration list logs a warning when the impl reappears).
+             Apply to the implementation class. Only effective for instance registrations via
+             <c>RegisterInstance(...)</c>; the type-based path (<c>RegisterDependency&lt;T&gt;()</c>,
+             <c>[GlobalDependency]</c>, <c>RegisterAllTypesImplementing</c>, etc.) rejects multi-instance impls with an
+             error since the resolver instantiates each registered type at most once - the marker would be inert there.
+            
+             Multi-instance impls are kept in a flat list separate from the regular dependency tables; the same instance
+             passed through any combination of <c>AsSelf()</c>, <c>AsAllInterfaces()</c>, <c>As&lt;TDep&gt;()</c>, and
+             <c>AsSelfAndAllBaseClasses()</c> is added exactly once. <c>ResolveAll&lt;TDep&gt;</c> filters that list by
+             <c>IsAssignableFrom</c>, so it surfaces every multi-instance impl that implements <c>TDep</c> (which still
+             needs <see cref="T:Mafi.MultiDependencyAttribute"/>) regardless of which chain method registered it.
+             <c>Resolve&lt;TImpl&gt;</c> against the impl type behaves the same as resolving an unregistered type.
+            
+             Note the parallel with <see cref="T:Mafi.MultiDependencyAttribute"/>: that attribute marks an interface as allowing
+             multiple impls; this marker marks an impl as allowing multiple instances - related but distinct axes.
+            
+             Constraint: must not implement <see cref="T:System.IDisposable"/>. Multi-instance disposal isn't a use case
+             we support, and forbidding it lets the resolver use the simple flat-list registration path.
+             </summary>
         </member>
         <member name="T:Mafi.Event">
             <summary>
@@ -6542,6 +6614,14 @@
             This is not needed to be called during normal operation, only during termination.
             </summary>
         </member>
+        <member name="M:Mafi.Logging.Graylog.GraylogLogger.NotifyModsLoading(System.String,System.String)">
+            <summary>
+            Sets the mod and DLC ID fields attached to subsequent log messages. This should be called as soon as
+            the mods that are about to be loaded are known so that errors during mod instantiation and proto
+            registration are tagged with the mods involved (which happens before the resolver is built).
+            May be called repeatedly to refresh as more mods finish loading.
+            </summary>
+        </member>
         <member name="T:Mafi.Logging.Graylog.IUdpSender">
             <summary>
             Abstraction over UDP sending for testability.
@@ -6582,6 +6662,11 @@
             Log received callback. Note that the handler have to be thread safe!
             </summary>
         </member>
+        <member name="E:Mafi.Log.FlushRequested">
+            <summary>
+            Raised by <see cref="M:Mafi.Log.Flush"/> to request all log writers to flush their buffers.
+            </summary>
+        </member>
         <member name="E:Mafi.Log.LogReceivedThreadStatic">
             <summary>
             Thread-static version of <see cref="E:Mafi.Log.LogReceived"/> event. Useful in tests that run in parallel.
@@ -6591,6 +6676,11 @@
             <summary>
             Matches paths in stack trace in format "in D:\Path\To\src\Mafi\Class.cs" (or starting with "at ...") and
             removes the absolute path so that all paths are relative to the project.
+            </summary>
+        </member>
+        <member name="M:Mafi.Log.Flush">
+            <summary>
+            Requests all registered log writers to flush their buffers to disk.
             </summary>
         </member>
         <member name="M:Mafi.Log.Debug(System.String)">
@@ -12881,6 +12971,24 @@
             Reads data for all loaded classes. This has to be called at the end of loading.
             </summary>
         </member>
+        <member name="M:Mafi.Serialization.BlobReader.ReadRawBytes(System.Int32)">
+            <summary>
+            Reads <paramref name="length"/> raw bytes directly from the underlying stream without any framing.
+            Symmetric counterpart to <see cref="M:Mafi.Serialization.BlobWriter.WriteRawBytes(System.Byte[])"/>. Throws if the stream ends early.
+            </summary>
+        </member>
+        <member name="M:Mafi.Serialization.BlobReader.RegisterPreDeserializedObject(System.Object)">
+             <summary>
+             Registers <paramref name="obj"/> in the back-reference table at the next available ID without reading
+             any bytes. Subsequent <see cref="M:Mafi.Serialization.BlobReader.ReadGenericAs``1"/> / <see cref="M:Mafi.Serialization.BlobReader.TryStartClassDeserialization``1(``0@,System.Func{Mafi.Serialization.BlobReader,System.Type,``0},System.Func{Mafi.Serialization.BlobReader,System.String,``0},System.Boolean)"/>
+             calls that encounter a back-reference matching this position will resolve to <paramref name="obj"/>
+             instead of reading a fresh class header and data.
+            
+             Counterpart to <see cref="M:Mafi.Serialization.BlobWriter.RegisterPreSerializedObject(System.Object)"/>. The matching writer must call its
+             pre-serialized registration at the same point so the writer/reader ID counters stay in sync. Pass
+             <c>null</c> to reserve an ID slot (e.g. for a skipped sub-blob whose object cannot be deserialized).
+             </summary>
+        </member>
         <member name="M:Mafi.Serialization.BlobReader.TryStartClassDeserialization``1(``0@,System.Func{Mafi.Serialization.BlobReader,System.Type,``0},System.Func{Mafi.Serialization.BlobReader,System.String,``0},System.Boolean)">
              <summary>
              Starts class deserialization by reading next class ID from the stream. If the deserialized class is new,
@@ -12963,6 +13071,32 @@
             Variable encoding of integers. Small values encode in less bytes. The break-even is value ~26 M that still
             encodes to 4 bytes, values larger than that will have 5 bytes.
             </summary>
+        </member>
+        <member name="M:Mafi.Serialization.BlobWriter.WriteRawBytes(System.Byte[])">
+            <summary>
+            Writes raw bytes directly to the underlying stream without any framing (no length prefix, no class
+            header). The caller is responsible for tracking how many bytes were written and reading them back
+            with the matching <see cref="M:Mafi.Serialization.BlobReader.ReadRawBytes(System.Int32)"/>.
+            </summary>
+        </member>
+        <member name="M:Mafi.Serialization.BlobWriter.WriteRawBytes(System.IO.MemoryStream)">
+            <summary>
+            Copies all bytes (offset 0 to current Length) from <paramref name="src"/> to the underlying stream
+            without any framing - equivalent to <see cref="M:Mafi.Serialization.BlobWriter.WriteRawBytes(System.Byte[])"/> but avoids materializing an
+            intermediate byte array. The source's position is not modified by this call.
+            </summary>
+        </member>
+        <member name="M:Mafi.Serialization.BlobWriter.RegisterPreSerializedObject(System.Object)">
+             <summary>
+             Registers <paramref name="obj"/> in the back-reference table at the next available ID without writing any
+             bytes. Subsequent calls to <see cref="M:Mafi.Serialization.BlobWriter.WriteGeneric``1(``0)"/> / <see cref="M:Mafi.Serialization.BlobWriter.TryStartClassSerialization``1(``0)"/> for
+             the same instance will emit a back-reference instead of inlining a fresh copy.
+            
+             Used when the object's data is written through a sibling channel (e.g. a length-prefixed sub-blob) but
+             the object's identity must still be preserved for references from the rest of the stream. The matching
+             reader must call <see cref="M:Mafi.Serialization.BlobReader.RegisterPreDeserializedObject(System.Object)"/> with the same instance at the
+             same point so the writer/reader ID counters stay in sync.
+             </summary>
         </member>
         <member name="M:Mafi.Serialization.BlobWriter.EnqueueDataSerialization(System.Object,System.Action{System.Object,Mafi.Serialization.BlobWriter})">
             <summary>
@@ -13227,6 +13361,9 @@
             Whether the type is a struct without any references and all its members are also pure structs.
             </summary>
         </member>
+        <member name="F:Mafi.Core.FileSystemHelper.HRESULT_WIN32_ERROR_SUCCESS">
+            <summary><c>HRESULT_FROM_WIN32(ERROR_SUCCESS)</c> - phantom-success variant where the Win32 wrapper sets bit 31 even though the kernel succeeded.</summary>
+        </member>
         <member name="F:Mafi.Core.FileSystemHelper.DISALLOWED_NAMES">
             <summary>
             From: https://learn.microsoft.com/en-us/windows/win32/fileio/naming-a-file?redirectedfrom=MSDN
@@ -13234,6 +13371,41 @@
         </member>
         <member name="M:Mafi.Core.FileSystemHelper.GetAllFiles(Mafi.Core.FileType,System.String,System.String)">
             <param name="pattern">Pattern without file extension. File extension will be added based on FileType.</param>
+        </member>
+        <member name="M:Mafi.Core.FileSystemHelper.IsPhantomSuccessIoException(System.IO.IOException)">
+            <summary>
+            Recognizes IOExceptions that signal "success" rather than a real failure. These come from Mac/Linux users
+            running the game through CrossOver/Wine, where the translation layer surfaces an underlying POSIX success
+            as a Win32 IOException. Real failures construct HResult as <c>0x80070000 | win32err</c>, which sets bit 31
+            (severity) and reads as a negative signed int. CrossOver's phantom cases mostly skip that path and end up
+            with non-negative HResults (observed: 0x0, 0x02669800, 0x0333E300); a rarer variant produces exactly
+            <see cref="F:Mafi.Core.FileSystemHelper.HRESULT_WIN32_ERROR_SUCCESS"/> (negative). Both are recognized regardless of localized message.
+            </summary>
+            <remarks>
+            Observed in graylog only on metadata / rename / delete syscalls: <see cref="M:System.IO.File.Delete(System.String)"/>,
+            <see cref="M:System.IO.File.Move(System.String,System.String)"/>, and <see cref="P:System.IO.FileInfo.Length"/>. <see cref="M:System.IO.File.Open(System.String,System.IO.FileMode)"/> with
+            <see cref="F:System.IO.FileMode.Create"/> is not observed phantom-failing, so callers that need to return a usable
+            stream should not assume this recognizer covers their path.
+            <para>
+            Sample exception messages collected from player logs (the <c>C:\users\crossover\</c> path prefix is the
+            giveaway that the player is running through CrossOver):
+            <code>
+            Success : 'C:\users\crossover\...'                    (English)
+            Erfolg : 'C:\users\crossover\...'                     (German)
+            成功。 : 'C:\users\crossover\...'                      (Chinese)
+            Виконано успішно : 'C:\users\crossover\...'           (Ukrainian)
+            Unknown error (0x02669800) : 'C:\users\crossover\...' (HResult unmapped by Mono)
+            </code>
+            </para>
+            </remarks>
+        </member>
+        <member name="M:Mafi.Core.FileSystemHelper.MoveFileWithOverwrite(System.String,System.String)">
+            <summary>
+            Moves <paramref name="source"/> to <paramref name="dest"/>, replacing <paramref name="dest"/> if it
+            already exists. Atomic via <see cref="M:System.IO.File.Replace(System.String,System.String,System.String)"/> when available; otherwise
+            falls back to copy + delete. Use this instead of an explicit File.Delete + File.Move sequence, which can
+            strand the source on Wine/CrossOver when File.Delete phantom-fails leaving the dest in place.
+            </summary>
         </member>
         <member name="P:Mafi.Core.IFileSystemHelper.GameDataRootDirPath">
             <summary>

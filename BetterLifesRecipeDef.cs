@@ -20,6 +20,9 @@ namespace BetterLife_Assemblies
             //    .SetDuration(5.Seconds())
             //   .AddOutput(10, Ids.Products.Bricks, "WX")
             //   .BuildAndAdd();
+
+
+
             registrator.RecipeProtoBuilder
                 .Start("Easy Rail Parts", BetterLIDs.Recipes.easyRailParts, BetterLIDs.Machines.AssemblyBlt1)
                 .AddInput(5, Ids.Products.ConcreteSlab, "*")
@@ -34,6 +37,12 @@ namespace BetterLife_Assemblies
                 .AddInput(50, Ids.Products.IronScrap, "*")
                 .SetDuration(5.Seconds())
                 .AddOutput(15, Ids.Products.Iron, "WX")
+                .BuildAndAdd();
+            registrator.RecipeProtoBuilder
+                .Start("Scrap to Copper", BetterLIDs.Recipes.ScrapToCopper, BetterLIDs.Machines.AssemblyBlt1)
+                .AddInput(50, Ids.Products.CopperScrap, "*")
+                .SetDuration(5.Seconds())
+                .AddOutput(15, Ids.Products.Copper, "WX")
                 .BuildAndAdd();
 
 
@@ -63,8 +72,7 @@ namespace BetterLife_Assemblies
             registrator.RecipeProtoBuilder
                 .Start("My Bricks", BetterLIDs.Recipes.MyBricks, BetterLIDs.Machines.AssemblyBlt1)
                 .AddInput(5, Ids.Products.Dirt, "*")
-                .AddInput(5, Ids.Products.Cement, "*")
-                .AddInput(5, Ids.Products.Water, "HF")
+                .AddInput(5, Ids.Products.Slag, "*")
                 .SetDuration(5.Seconds())
                .AddOutput(10, Ids.Products.ConcreteSlab, "WX")
                .BuildAndAdd();
@@ -94,6 +102,13 @@ namespace BetterLife_Assemblies
                 .AddInput(5, Ids.Products.MechanicalParts, "*")
                 .SetDuration(Duration.FromSec(5))
                 .AddOutput(10, Ids.Products.VehicleParts, "WX")
+                .BuildAndAdd();
+
+            registrator.RecipeProtoBuilder.Start("Construction Parts 4C", BetterLIDs.Recipes.ConstructionParts4C, BetterLIDs.Machines.AssemblyBlt2)
+                .AddInput(5, Ids.Products.ConstructionParts2, "*")
+                .AddInput(10, Ids.Products.ConstructionParts3, "*")
+                .SetDuration(Duration.FromSec(5))
+                .AddOutput(10, Ids.Products.ConstructionParts4, "WX")
                 .BuildAndAdd();
 
             registrator.RecipeProtoBuilder.Start("Construction Parts 3C", BetterLIDs.Recipes.ConstructionParts3C, BetterLIDs.Machines.AssemblyBlt1)
@@ -172,12 +187,6 @@ namespace BetterLife_Assemblies
                 .AddOutput(10, Ids.Products.VehicleParts3, "WX")
                 .BuildAndAdd();
 
-            registrator.RecipeProtoBuilder.Start("Construction Parts 4C", BetterLIDs.Recipes.ConstructionParts4C, BetterLIDs.Machines.AssemblyBlt2)
-                .AddInput(5, Ids.Products.ConstructionParts3, "*")
-                .SetDuration(Duration.FromSec(5))
-                .AddOutput(10, Ids.Products.ConstructionParts4, "WX")
-                .BuildAndAdd();
-
             registrator.RecipeProtoBuilder
                 .Start("Research Lab 3", BetterLIDs.Recipes.ResearchLab3C, BetterLIDs.Machines.AssemblyBlt2)
                 .AddInput(5, Ids.Products.LabEquipment2, "*")
@@ -222,20 +231,20 @@ namespace BetterLife_Assemblies
                 .SetDuration(5.Seconds())
                 .AddOutput(10, Ids.Products.LabEquipment4, "WX")
                 .BuildAndAdd();
-            registrator.RecipeProtoBuilder
-                .Start("Easy Cement", BetterLIDs.Recipes.Cement1, BetterLIDs.Machines.AssemblyBlt1)
-                .AddInput(5, Ids.Products.Limestone, "*")
-                .AddInput(5, Ids.Products.Rock, "*")
-                .SetDuration(5.Seconds())
-                .AddOutput(10, Ids.Products.Cement, "WX")
-                .BuildAndAdd();
-            registrator.RecipeProtoBuilder
-                .Start("Easy Cement 2", BetterLIDs.Recipes.EasyCement2, BetterLIDs.Machines.AssemblyBlt1)
-                .AddInput(5, Ids.Products.Limestone, "*")
-                .AddInput(5, Ids.Products.Slag, "*")
-                .SetDuration(5.Seconds())
-                .AddOutput(10, Ids.Products.Cement, "WX")
-                .BuildAndAdd();
+            //registrator.RecipeProtoBuilder
+            //    .Start("Easy Cement", BetterLIDs.Recipes.Cement1, BetterLIDs.Machines.AssemblyBlt1)
+            //    .AddInput(5, Ids.Products.Limestone, "*")
+            //    .AddInput(5, Ids.Products.Rock, "*")
+            //    .SetDuration(5.Seconds())
+            //    .AddOutput(10, Ids.Products.Cement, "WX")
+            //    .BuildAndAdd();
+            //registrator.RecipeProtoBuilder
+            //    .Start("Easy Cement", BetterLIDs.Recipes.Cement1, BetterLIDs.Machines.AssemblyBlt1)
+            //    .AddInput(5, Ids.Products.Limestone, "*")
+            //    .AddInput(5, Ids.Products.Rock, "*")
+            //    .SetDuration(5.Seconds())
+            //    .AddOutput(10, Ids.Products.Cement, "WX")
+            //    .BuildAndAdd(); 
             registrator.RecipeProtoBuilder
                 .Start("Better Ethanol", BetterLIDs.Recipes.Ethanol1, BetterLIDs.Machines.AssemblyBlt2)
                 .AddInput(5, Ids.Products.CarbonDioxide, "*")
@@ -249,6 +258,33 @@ namespace BetterLife_Assemblies
                 .SetDuration(2.Seconds())
                 .AddOutput(10, Ids.Products.Coal, "*")
                 .BuildAndAdd();
+            registrator.RecipeProtoBuilder
+                .Start("Exaust Recycling 2", BetterLIDs.Recipes.Exhaust2, BetterLIDs.Machines.AssemblyBlt1)
+                .AddInput(50, Ids.Products.SteamHi, "*")
+                .SetDuration(2.Seconds())
+                .AddOutput(20, Ids.Products.Coal, "*")
+                .BuildAndAdd();
+            registrator.RecipeProtoBuilder
+                .Start("Slag to Iron Scrap", BetterLIDs.Recipes.SlagToIronScrap, BetterLIDs.Machines.AssemblyBlt1)
+                .AddInput(10, Ids.Products.Slag, "*")
+                .SetDuration(10.Seconds())
+                .AddOutput(5, Ids.Products.IronScrap, "*")
+                .BuildAndAdd();
+            registrator.RecipeProtoBuilder
+                .Start("Household Goods I", BetterLIDs.Recipes.HouseHoldGoods1, BetterLIDs.Machines.AssemblyBlt2)
+                .AddInput(4, Ids.Products.Wood, "*")
+                .AddInput(2, Ids.Products.Iron, "*")
+                .SetDuration(12.Seconds())
+                .AddOutput(20, Ids.Products.HouseholdGoods, "WX")
+                .BuildAndAdd();
+            registrator.RecipeProtoBuilder
+                .Start("PCB I", BetterLIDs.Recipes.PCB1, BetterLIDs.Machines.AssemblyBlt2)
+                .AddInput(10, Ids.Products.Plastic, "*")
+                .AddInput(5, Ids.Products.Copper, "*")
+                .SetDuration(8.Seconds())
+                .AddOutput(20, Ids.Products.PCB, "WX")
+                .BuildAndAdd();
+
 
 
         }

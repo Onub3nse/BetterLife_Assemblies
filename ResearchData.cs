@@ -29,13 +29,13 @@ namespace BetterLife_Assemblies
 
                 .AddMachineToUnlock(BetterLIDs.Machines.AssemblyBlt1)
                 .AddRecipeToUnlock(BetterLIDs.Recipes.ConstructionParts1C)
-                .AddRecipeToUnlock(BetterLIDs.Recipes.Cement1)
+                //.AddRecipeToUnlock(BetterLIDs.Recipes.Cement1)
                 .AddRecipeToUnlock(BetterLIDs.Recipes.MyBricks)
                 .AddRecipeToUnlock(BetterLIDs.Recipes.ScrapToIron)
                 .AddRecipeToUnlock(BetterLIDs.Recipes.MechanicalParts1C)
                 .AddRecipeToUnlock(BetterLIDs.Recipes.Electronics1C)
                 .AddRecipeToUnlock(BetterLIDs.Recipes.RLab1)
-                .AddRequirementForLifetimeProduction(Ids.Products.ConstructionParts, 50)
+                .AddRequirementForLifetimeProduction(Ids.Products.ConstructionParts, 10)
 
                 .BuildAndAdd();
 
@@ -46,17 +46,19 @@ namespace BetterLife_Assemblies
 
             ResearchNodeProto nodeProto1b = registrator.ResearchNodeProtoBuilder
                 .Start("Alternative Recipes 2", BetterLIDs.Research.AlterRecipesT1b, 6)
-                .Description("Walls. New assembler with alternative recipes for a BetterLife!")
+                .Description("New assembler with alternative recipes for a BetterLife!")
 
                 .AddRecipeToUnlock(BetterLIDs.Recipes.EasyFertilizer1)
                 .AddRecipeToUnlock(BetterLIDs.Recipes.EasyFuel)
                 .AddRecipeToUnlock(BetterLIDs.Recipes.ConstructionParts2C)
                 .AddRecipeToUnlock(BetterLIDs.Recipes.ConstructionParts3C)
                 .AddRecipeToUnlock(BetterLIDs.Recipes.VehiclePartsT1C)
+                .AddRecipeToUnlock(BetterLIDs.Recipes.VehiclePartsT2C)
                 .AddRecipeToUnlock(BetterLIDs.Recipes.Exhaust1)
                 .AddRequiredProto(Ids.Research.ResearchLab2)
                 .AddRecipeToUnlock(BetterLIDs.Recipes.easyRailParts)
-                .AddRequirementForLifetimeProduction(Ids.Products.ConstructionParts2, 50)
+                .AddRecipeToUnlock(BetterLIDs.Recipes.SlagToIronScrap)
+                .AddRequirementForLifetimeProduction(Ids.Products.ConstructionParts2, 10)
 
                 .BuildAndAdd();
 
@@ -75,7 +77,9 @@ namespace BetterLife_Assemblies
                 .AddRecipeToUnlock(BetterLIDs.Recipes.SulfurBurn)
                 .AddRequiredProto(Ids.Research.ResearchLab3)
                 .AddMachineToUnlock(BetterLIDs.Machines.AssemblyBlt2)
-                .AddRequirementForLifetimeProduction(Ids.Products.ConstructionParts3, 50)
+                .AddRecipeToUnlock(BetterLIDs.Recipes.ScrapToCopper)
+                .AddRecipeToUnlock(BetterLIDs.Recipes.PCB1)
+                .AddRequirementForLifetimeProduction(Ids.Products.ConstructionParts3, 10)
                  
                 .BuildAndAdd();
 
@@ -85,15 +89,19 @@ namespace BetterLife_Assemblies
             ResearchNodeProto nodeProto3 = registrator.ResearchNodeProtoBuilder
                 .Start("Alternative Recipes 4", BetterLIDs.Research.AlterRecipesT3, 10)
                 .Description("Alternative recipes for your pleasure part III... Construction III")
-                .AddRecipeToUnlock(BetterLIDs.Recipes.VehiclePartsT2C)
                 .AddRecipeToUnlock(BetterLIDs.Recipes.FuelGas1)
                 .AddRecipeToUnlock(BetterLIDs.Recipes.Amonia1)
                 .AddRecipeToUnlock(BetterLIDs.Recipes.SulfuricAcid1)
                 .AddRecipeToUnlock(BetterLIDs.Recipes.SourWater1)
                 .AddRecipeToUnlock(BetterLIDs.Recipes.EasyFertilizerT3C)
                 .AddRecipeToUnlock(BetterLIDs.Recipes.EasySulfur)
+                .AddRecipeToUnlock(BetterLIDs.Recipes.HouseHoldGoods1)
+
+
+
+
                 .AddRequiredProto(Ids.Research.ResearchLab4)
-                .AddRequirementForLifetimeProduction(Ids.Products.ConstructionParts4, 50)
+                .AddRequirementForLifetimeProduction(Ids.Products.ConstructionParts4, 10)
                 .BuildAndAdd();
               
             nodeProto3.GridPosition = nodeProto2.GridPosition.AddX(4);
@@ -109,7 +117,7 @@ namespace BetterLife_Assemblies
                 .AddRecipeToUnlock(BetterLIDs.Recipes.ResearchLab4C)
                 .AddRecipeToUnlock(BetterLIDs.Recipes.Ethanol1)
                 .AddRequiredProto(Ids.Research.ResearchLab5)
-                .AddRequirementForLifetimeProduction(Ids.Products.ConstructionParts4, 150)
+                .AddRequirementForLifetimeProduction(Ids.Products.ConstructionParts4, 25)
                 .BuildAndAdd();
 
             nodeProto4.GridPosition = nodeProto3.GridPosition.AddX(4);

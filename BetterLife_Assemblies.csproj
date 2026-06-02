@@ -38,18 +38,24 @@
   <ItemGroup>
     <Compile Remove="Assets\**" />
     <Compile Remove="Library\**" />
+    <Compile Remove="Logs\**" />
     <Compile Remove="Packages\**" />
     <Compile Remove="ProjectSettings\**" />
+    <Compile Remove="Properties\**" />
     <Compile Remove="UserSettings\**" />
     <EmbeddedResource Remove="Assets\**" />
     <EmbeddedResource Remove="Library\**" />
+    <EmbeddedResource Remove="Logs\**" />
     <EmbeddedResource Remove="Packages\**" />
     <EmbeddedResource Remove="ProjectSettings\**" />
+    <EmbeddedResource Remove="Properties\**" />
     <EmbeddedResource Remove="UserSettings\**" />
     <None Remove="Assets\**" />
     <None Remove="Library\**" />
+    <None Remove="Logs\**" />
     <None Remove="Packages\**" />
     <None Remove="ProjectSettings\**" />
+    <None Remove="Properties\**" />
     <None Remove="UserSettings\**" />
   </ItemGroup>
 
@@ -61,7 +67,6 @@
     <Compile Remove="blZipperSetPriorityPortsCmd.cs" />
     <Compile Remove="btBalancer.cs" />
     <Compile Remove="cusMachineCommandsProcessor.cs" />
-    <Compile Remove="customMachineProto.cs" />
     <Compile Remove="HarmonyExtensions.cs" />
     <Compile Remove="ioPortTemplates.cs" />
     <Compile Remove="MafiZipper.cs" />
@@ -373,8 +378,9 @@
     <Copy SourceFiles="$(ProjectDir)\manifest.json" DestinationFolder="$(COI_MODS)\$(TargetName)\" />
     <Copy SourceFiles="$(ProjectDir)\config.json" DestinationFolder="$(COI_MODS)\$(TargetName)" ContinueOnError="true" />
     <Copy SourceFiles="$(ProjectDir)\readme.txt" DestinationFolder="$(COI_MODS)\$(TargetName)" ContinueOnError="true" />
-    <Copy SourceFiles="$(ProjectDir)\Thumbnail.png" DestinationFolder="$(COI_MODS)\$(TargetName)" ContinueOnError="true" />
-    <Copy SourceFiles="$(TargetPath)" DestinationFolder="$(COI_MODS)\$(TargetName)\" />
+	  <Copy SourceFiles="$(ProjectDir)\Thumbnail.png" DestinationFolder="$(COI_MODS)\$(TargetName)" ContinueOnError="true" />
+	  <Copy SourceFiles="$(ProjectDir)\changelog.txt" DestinationFolder="$(COI_MODS)\$(TargetName)" ContinueOnError="true" />
+	  <Copy SourceFiles="$(TargetPath)" DestinationFolder="$(COI_MODS)\$(TargetName)\" />
     <Copy SourceFiles="$(TargetDir)$(TargetName).pdb" DestinationFolder="$(COI_MODS)\$(TargetName)\" Condition="'$(Configuration)' == 'Debug'" />
     <Copy SourceFiles="$(TargetDir)0Harmony.dll" DestinationFolder="$(COI_MODS)\$(TargetName)\" />
     <Copy SourceFiles="@(AssetBundles)" DestinationFolder="$(COI_MODS)\$(TargetName)\AssetBundles" />

@@ -622,9 +622,6 @@
             changed in any other way.
             </remarks>
         </member>
-        <member name="F:Mafi.Unity.Entities.Dynamic.DynamicGroundEntityMb.m_simPosition2f">
-            <summary>Sim state snapshotted in SimUpdateEnd to avoid Fix32 conversions during sync.</summary>
-        </member>
         <member name="M:Mafi.Unity.Entities.Dynamic.DynamicGroundEntityMb.RenderUpdateAfterSync(Mafi.Core.GameTime)">
             <summary>Deferred vehicle pose and state update, runs on main thread after sync.</summary>
         </member>
@@ -2364,6 +2361,16 @@
             Loads the given mods. Mods are sorted based on their dependencies.
             </summary>
         </member>
+        <member name="E:Mafi.Unity.IMain.ModsForGameSessionAboutToLoad">
+            <summary>
+            Fired by scene loaders right before mods are loaded for a game session (gameplay or map editor,
+            including loaded saves). Observers can use this to attach mod context (e.g. log fields) so any
+            failures during the actual mod loading and instantiation carry the IDs of mods involved.
+            </summary>
+        </member>
+        <member name="M:Mafi.Unity.IMain.NotifyModsForGameSessionAboutToLoad(Mafi.Collections.ImmutableCollections.ImmutableArray{Mafi.Core.Mods.AvailableModData})">
+            <summary>Raises <see cref="E:Mafi.Unity.IMain.ModsForGameSessionAboutToLoad"/>. Called by scene loaders.</summary>
+        </member>
         <member name="M:Mafi.Unity.IMain.LoadGame(Mafi.Core.SaveFileInfo,System.Nullable{Mafi.Collections.ImmutableCollections.ImmutableArray{Mafi.Core.Mods.AvailableModData}},Mafi.Collections.ImmutableCollections.ImmutableArray{Mafi.Core.Mods.ModJsonConfig})">
             <summary></summary>
             <param name="modsListOverride">
@@ -3349,9 +3356,31 @@
             Renders track block status using chunk-based instanced rendering.
             </summary>
         </member>
+        <member name="P:Mafi.Unity.Trains.TrainTracksBlockVisualizer.IsActive">
+            <summary>
+            When inactive, sim-thread events are discarded to avoid unnecessary work.
+            On activation, all instances are refreshed in-place from <see cref="T:Mafi.Core.Trains.TrainTracksGraphManager"/>.
+            </summary>
+        </member>
+        <member name="F:Mafi.Unity.Trains.TrainTracksBlockVisualizer.m_isActiveForSim">
+            <summary>
+            Synced copy of <see cref="P:Mafi.Unity.Trains.TrainTracksBlockVisualizer.IsActive"/>, updated during sync so sim-thread event handlers have a consistent value.
+            </summary>
+        </member>
+        <member name="M:Mafi.Unity.Trains.TrainTracksBlockVisualizer.refreshAllInstances">
+            <summary>
+            Refreshes all tracked instances in-place from current graph manager state.
+            </summary>
+        </member>
         <member name="T:Mafi.Unity.Trains.TrainTracksBlockVisualizer.EntityProtoRenderingData">
             <summary>
             Handles rendering of a set of entities based on its proto. Each entity proto has a separate instance.
+            </summary>
+        </member>
+        <member name="M:Mafi.Unity.Trains.TrainTracksBlockVisualizer.EntityProtoRenderingData.UpdateInstanceData(Mafi.Core.Trains.IEntityWithTrainTrack,System.UInt64)">
+            <summary>
+            Repacks block state bitmaps in-place without removing/re-adding the instance.
+            Reads current state directly from <see cref="T:Mafi.Core.Trains.TrainTracksGraphManager"/>.
             </summary>
         </member>
         <member name="T:Mafi.Unity.Trains.TrainTracksPathabilityVisualizer">
@@ -4287,6 +4316,16 @@
             Gets the current plan shown to the player.
             </summary>
         </member>
+        <member name="T:Mafi.Unity.Ui.Controllers.LayoutEntityPlacing.IReplaceCmdRedirector">
+            <summary>
+            Hook that lets a domain (e.g. trains DLC) substitute paste-time <see cref="T:Mafi.Core.Entities.ReplaceEntityCmd"/>s
+            with a different input command. Implementations remove consumed entries from
+            <paramref name="replacements"/> (and may also drop related <paramref name="entitiesToAdd"/> -
+            for example, copied poles that the substitute command will regenerate) and append the substitute
+            command(s) to <paramref name="substituteCmds"/>. The placer schedules whatever remains in the
+            original lists alongside the substitutes.
+            </summary>
+        </member>
         <member name="M:Mafi.Unity.Ui.Controllers.LayoutEntityPlacing.LayoutEntitySlotPlacerHelper.SetPosition(Mafi.Tile3i)">
             <summary>
             Sets the position and returns true if the position has changed.
@@ -4475,7 +4514,7 @@
         </member>
         <member name="F:Mafi.Unity.Ui.Controllers.PolygonAreaSelectionController.m_translatePolygonPrevCursor">
             <summary>
-            The previous terrain cursor position. Only valid while the tool mode is TranslatePolygon.
+            The previous terrain cursor position. Only valid while the tool mode is TranslateEdge or TranslatePolygon.
             </summary>
         </member>
         <member name="F:Mafi.Unity.Ui.Controllers.PolygonAreaSelectionController.m_onSubmitNewArea">
@@ -5492,10 +5531,16 @@
             Called once every frame on the main thread.
             </summary>
         </member>
+        <member name="M:Mafi.Unity.Vehicles.AttachmentMb.SimUpdateEnd(Mafi.Unity.Entities.Dynamic.DynamicGroundEntityMb)">
+            <summary>
+            Snapshots sim state into prep buffer. Called from SimUpdateEnd on the sim thread.
+            Attachment reference is stable because attachment swapping happens during Sync.
+            </summary>
+        </member>
         <member name="M:Mafi.Unity.Vehicles.AttachmentMb.SnapshotCargo(Mafi.Core.ProductQuantity,Mafi.Quantity)">
             <summary>
             Initializes snapshot data from already-captured cargo. Called when an attachment is
-            swapped in during RenderUpdateAfterSync, where reading sim state directly is unsafe.
+            swapped in during Sync, where reading sim state directly is safe.
             </summary>
         </member>
         <member name="M:Mafi.Unity.Vehicles.AttachmentMb.Reset">

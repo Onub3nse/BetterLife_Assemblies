@@ -1,9 +1,0 @@
-{
-  "oresorter_capacity": {
-    "default": 300,
-    "min": 200,
-    "max": 100000,
-    "is_integer": true,
-    "description": "Custom capacity for T1 OreSorter"
-  }
- }

@@ -2116,7 +2116,11 @@
         </member>
         <member name="T:Mafi.Core.Entities.Blueprints.RecoverySaveConfig">
             <summary>
-            Marker config that indicates this save file is a recovery save rather than a normal save.
+            Legacy marker that previously identified recovery saves at the configs-section level.
+            Replaced by dispatching on the next chunk header (HEADER_RECOVERY_SAVE vs HEADER_RESOLVER),
+            which makes the discriminator a file-format detail instead of a serialized in-memory config.
+            Kept so older recovery saves that still embed this marker can deserialize their configs
+            section without erroring on an unknown type; the resulting instance is then ignored.
             </summary>
         </member>
         <member name="T:Mafi.Core.Entities.Blueprints.RecoverySaveManger">
@@ -2302,6 +2306,15 @@
             Reads the next section ID string and verifies it matches the expected value.
             </summary>
         </member>
+        <member name="M:Mafi.Core.Entities.Blueprints.RecoverySaveManger.writeDecals(Mafi.Serialization.BlobWriter)">
+            <summary>
+            Writes per-tile decal data. Run as its own section after BUILDINGS so entity
+            reconstruction's auto-surface placement (which overwrites the entire TileSurfaceData via
+            SetCustomSurface) cannot clobber decals. Iterates every tile rather than relying on
+            IsChanged because decals are sparse compared to the full grid - the linear pass is
+            proportional to the count of decal tiles, not all changed tiles.
+            </summary>
+        </member>
         <member name="M:Mafi.Core.Entities.Blueprints.RecoverySaveManger.ReadWorldMapData(Mafi.Serialization.BlobReader)">
             <summary>
             Reads world map topology from the recovery save. Called from GameBuilder before game initialization
@@ -2328,6 +2341,14 @@
         <member name="M:Mafi.Core.Entities.Blueprints.RecoverySaveManger.BuildDetailedImportReport">
             <summary>
             Returns a detailed multi-line report of what was loaded and skipped, including proto IDs.
+            </summary>
+        </member>
+        <member name="T:Mafi.Core.Entities.Blueprints.RecoverySaveMarker">
+            <summary>
+            Runtime DI marker registered into the resolver only while a recovery save is being loaded.
+            Consumers (e.g. <see cref="T:Mafi.Core.SandboxManager"/>) take an <c>Option&lt;RecoverySaveMarker&gt;</c> -
+            presence indicates a recovery-load session. Not serialized: a normal save written from a
+            recovery-loaded session will not contain it, so loading that save back behaves as a normal load.
             </summary>
         </member>
         <member name="T:Mafi.Core.Entities.Blueprints.RecoverySaveWorldMapGenerator">
@@ -6954,7 +6975,7 @@
             Height is relative to base of entity
             </summary>
         </member>
-        <!-- Badly formed XML comment ignored for member "M:Mafi.Core.Factory.Transports.StackerTower.getNextTargetTile(Mafi.RelTile1i,Mafi.HeightTilesF,Mafi.Tile2i,System.Boolean@)" -->
+        <!-- Badly formed XML comment ignored for member "M:Mafi.Core.Factory.Transports.StackerTower.getNextTargetTile(Mafi.RelTile1i,Mafi.HeightTilesF,Mafi.Tile2i,System.Boolean@,System.Boolean@)" -->
         <member name="M:Mafi.Core.Factory.Transports.StackerTower.getScanThrottlingParameters(System.Int32)">
             <summary>
             Throttling is achieved by:
@@ -9057,6 +9078,41 @@
         <member name="P:Mafi.Core.GameTime.CurrSimUpdateDurationMs">
             <summary>
             Current duration of a sim update.
+            </summary>
+        </member>
+        <member name="T:Mafi.Core.Game.ConfigIdentityFixer">
+             <summary>
+             Rebinds stale <see cref="T:Mafi.Core.Game.IConfig"/> field references to the canonical DI-registered instances.
+            
+             Why needed: V2 config serialization writes each config to its own length-prefixed blob with an
+             isolated object reference table. References to a config from outside its blob - either from
+             another config in the configs section, or from a manager class in the resolver section - cannot
+             be encoded as back-references and get inlined as fresh duplicates instead. After load, those
+             fields hold instances that differ from the canonical configs registered in DI.
+            
+             V3 saves don't have stale refs (back-refs preserve identity on the wire), so this pass is a no-op
+             for them. It runs unconditionally on load as a defensive measure for any V2 save still in the wild.
+             </summary>
+        </member>
+        <member name="T:Mafi.Core.Game.ConfigIdentityFixer.StaleConfigRef">
+            <summary>
+            One stale config field reference - the field's current value differs from what the resolver returns.
+            </summary>
+        </member>
+        <member name="M:Mafi.Core.Game.ConfigIdentityFixer.EnumerateStaleConfigs(Mafi.DependencyResolver)">
+            <summary>
+            Enumerates every <see cref="T:Mafi.Core.Game.IConfig"/>-typed field on a resolved instance whose value is not the
+            instance the resolver returns. Walks the inheritance chain with <c>DeclaredOnly</c> so inherited
+            PRIVATE fields are also visited (<see cref="M:System.Type.GetFields(System.Reflection.BindingFlags)"/> with NonPublic returns
+            only declared private fields). Fields with a null value, or whose type cannot be resolved from DI,
+            are skipped.
+            </summary>
+        </member>
+        <member name="M:Mafi.Core.Game.ConfigIdentityFixer.RebindStaleConfigs(Mafi.DependencyResolver)">
+            <summary>
+            Rebinds every stale <see cref="T:Mafi.Core.Game.IConfig"/> field reference to the canonical DI instance via
+            reflection (works on readonly fields). Idempotent - a no-op when nothing is stale. Returns the
+            number of fields rebound.
             </summary>
         </member>
         <member name="F:Mafi.Core.Game.LoadGameArgs.ConfigOverrides">
@@ -16296,6 +16352,14 @@
             Every month we reduce landfill by this quantity. This aims to reduce pressure in early game.
             </summary>
         </member>
+        <member name="M:Mafi.Core.Terrain.LandfillOnTerrainManager.ReSubscribeAfterDisruptionSimulatorRepair(Mafi.Core.Terrain.Physics.ITerrainDisruptionSimulator)">
+            <summary>
+            Re-attaches the recovery-event subscription after <see cref="T:Mafi.Core.Terrain.TerrainManager"/> swaps a
+            stale <see cref="T:Mafi.Core.Terrain.Physics.NoTerrainDisruptionSimulator"/> for a real one (legacy recovery-save
+            repair path). The original ctor subscription was on the no-op's transient (<see cref="T:Mafi.Serialization.DoNotSaveAttribute"/>)
+            dummy event, so it didn't survive the broken save.
+            </summary>
+        </member>
         <member name="T:Mafi.Core.Terrain.Physics.NoTerrainDisruptionSimulator">
             <summary>
             Does no terrain surface simulation.
@@ -16359,6 +16423,13 @@
              By trying to expand diagonally only some time, pile spreads in more circular way.
              If diagonals are tested only ~30% of the time, we not only save on perf but the result looks better than ever!
              </summary>
+        </member>
+        <member name="M:Mafi.Core.Terrain.Physics.TerrainPhysicsSimulator.RegisterExistingEntityConstraintsForRepair(Mafi.Core.Entities.IEntitiesManager)">
+            <summary>
+            Used by <see cref="T:Mafi.Core.Terrain.TerrainManager"/> to retroactively register entity constraints when a
+            fresh simulator replaces a stale <see cref="T:Mafi.Core.Terrain.Physics.NoTerrainPhysicsSimulator"/> deserialized from
+            a save that was created before the recovery-save simulator-registration fix.
+            </summary>
         </member>
         <member name="P:Mafi.Core.Terrain.Physics.ITerrainPhysicsSimulator.IsProcessingTiles">
             <summary>
@@ -16896,6 +16967,14 @@
             the map generation code.
             </summary>
         </member>
+        <member name="P:Mafi.Core.Terrain.TerrainManager.SavedFlagsMask">
+            <summary>
+            Mask of flag bits that are persisted across save/load. Bits outside this mask belong to
+            runtime-only reporters (registered with <c>isSaved: false</c>) and must not be round-tripped
+            through any save format - including recovery saves - or the live state diverges from the
+            flag bits and physics/path-finding queries silently break.
+            </summary>
+        </member>
         <member name="M:Mafi.Core.Terrain.TerrainManager.GetMutableTerrainDataRef">
             <summary>
             Returns reference mutable terrain data. You must retain the ref, passing this by value will result
@@ -16914,6 +16993,18 @@
             instead of being streamed out over future sim/render frames. UI/rendering only, simulation
             listeners must not subscribe. Used by recovery save import so the loading screen covers the
             full renderer update and the player never sees stale chunks flash in.
+            </summary>
+        </member>
+        <member name="M:Mafi.Core.Terrain.TerrainManager.repairBrokenTerrainSimulators(System.Int32,Mafi.DependencyResolver)">
+            <summary>
+            Pre-V305 recovery loads serialized no-op simulators into the save. Swap them back to the
+            real ones on load. Delete this once the minimum supported save version reaches V304.
+            </summary>
+        </member>
+        <member name="M:Mafi.Core.Terrain.TerrainManager.RepairBrokenTerrainSimulators(Mafi.DependencyResolver)">
+            <summary>
+            Inner repair body, exposed for testing. Production callers should go through the
+            <see cref="!:InitAfterLoad"/> entry point above which gates on the saved version.
             </summary>
         </member>
         <member name="M:Mafi.Core.Terrain.TerrainManager.initializeTerrain">
@@ -18582,6 +18673,20 @@
             write the final stream to the local file identified by the given path.
             </summary>
         </member>
+        <member name="T:Mafi.Core.SaveGame.ConfigsSerialization">
+             <summary>
+             V2/V3 configs chunk serialization. Each <see cref="T:Mafi.Core.Game.IConfig"/> is written as a length-prefixed
+             self-contained blob with its own object/type reference scope. This makes unknown configs (from removed
+             mods) trivially skippable - their length is known up-front and their internal string/object references
+             cannot pollute the parent reader's reference tables.
+            
+             The V2 format had a known issue: configs were not registered in the parent writer's back-reference
+             table, so any reference to a config from outside its blob (other configs in their own blobs, or fields
+             on classes serialized in the resolver section) got inlined as a fresh duplicate instead of resolving to
+             the canonical instance. V3 fixes this by registering each successfully-handled config in the parent's
+             back-reference table after its blob is processed, so subsequent references become back-refs.
+             </summary>
+        </member>
         <member name="M:Mafi.Core.SaveGame.CustomSerializer.CustomTextReader.SetProtosDb(Mafi.Core.Prototypes.ProtosDb)">
             <summary>
             This enables protos reading.
@@ -18650,7 +18755,7 @@
              HEADER_RESOLVER validation at the end.
              </summary>
         </member>
-        <member name="M:Mafi.Core.SaveGame.GameLoader.FinishGameLoadAndDisposeTimeSliced(Mafi.Serialization.BlobReader,Mafi.DependencyResolverBuilder,Mafi.Core.Game.SpecialSerializerFactories,System.Action{Mafi.DependencyResolver},System.Action{Mafi.DependencyResolver},System.Boolean)">
+        <member name="M:Mafi.Core.SaveGame.GameLoader.FinishGameLoadAndDisposeTimeSliced(Mafi.Serialization.BlobReader,Mafi.DependencyResolverBuilder,Mafi.Core.Game.SpecialSerializerFactories,System.Action{Mafi.DependencyResolver},System.Action{Mafi.DependencyResolver},System.Boolean,System.Nullable{System.UInt64})">
             <summary>
             Returns a loaded resolver.
             </summary>
@@ -18730,7 +18835,29 @@
         </member>
         <member name="F:Mafi.Core.SaveGame.SaveHeaders.HEADER_CONFIGS">
             <summary>
-            Marks a chunk that contains configs.
+            Marks a chunk that contains configs in the legacy V1 format (single shared object/type table).
+            </summary>
+        </member>
+        <member name="F:Mafi.Core.SaveGame.SaveHeaders.HEADER_CONFIGS_V2">
+             <summary>
+             Marks a chunk that contains configs in the V2 format: each config is written as a length-prefixed
+             self-contained blob with its own object/type reference scope. Unknown configs (from removed mods) are
+             trivially skippable since their byte length is known up-front and their internal references cannot
+             pollute the parent reader's tables.
+             Distinct header (rather than relying on save version) so the V2 format can be back-ported to older
+             branches without bumping save version - loaders only need to branch on the chunk header.
+            
+             V2 has a known issue: configs are not in the parent writer's back-reference table, so any reference
+             from outside the blob (other configs, or fields on classes serialized in the resolver section) gets
+             inlined as a fresh copy instead of resolving to the canonical instance. V3 below fixes this.
+             </summary>
+        </member>
+        <member name="F:Mafi.Core.SaveGame.SaveHeaders.HEADER_CONFIGS_V3">
+            <summary>
+            Same blob layout as V2 but each successfully-deserialized config is also registered in the parent
+            reader's back-reference table (and symmetrically on the writer side). This preserves object identity
+            for any reference to a config from outside its own blob, fixing the V2 staleness bug. Skipped blobs
+            (unknown types from removed mods) register a null placeholder to keep IDs aligned.
             </summary>
         </member>
         <member name="F:Mafi.Core.SaveGame.SaveHeaders.HEADER_RESOLVER">
@@ -18905,6 +19032,11 @@
             and performs validation every 25.6 seconds on every train (time-sliced).
             </remarks>
         </member>
+        <member name="F:Mafi.Core.Trains.Train.PATH_RETRY_COOLDOWN">
+            <summary>
+            Duration between repeated pathfinding attempts when failing to find a path. Not always respected.
+            </summary>
+        </member>
         <member name="F:Mafi.Core.Trains.Train.TIME_BEFORE_NO_PATH_NOTIF">
             <summary>
             If a train is stopping then reversing we need a little time to figure out the new path.
@@ -18983,11 +19115,6 @@
             <summary>
             When a train does not notify approach for this duration, the entity listening for the approach events
             can consider no longer being approached by the train (e.g. the train re-planned its path or stopped early).
-            </summary>
-        </member>
-        <member name="F:Mafi.Core.Trains.Train.PATH_RETRY_COOLDOWN">
-            <summary>
-            Duration between repeated pathfinding attempts when failing to find a path. Not always respected.
             </summary>
         </member>
         <member name="F:Mafi.Core.Trains.Train.ArrivalNotMetItemForUi">
@@ -19276,6 +19403,23 @@
             <summary>
             Pulls forward until the last occupied block is a station. If no blocks are currently a station, returns false.
             Returns true once conditions is satisfied.
+            </summary>
+        </member>
+        <member name="M:Mafi.Core.Trains.Train.forceReleaseAllAlignedWagons">
+            <summary>
+            Force-releases every wagon and locomotive that holds an <c>AlignedStation</c>
+            reference. Used when an alignment is skipped from a state where wagons may
+            already be aligned (the referenced module may have been destroyed or retasked).
+            Force release is needed because <c>CanReleaseWagon</c> may never reach zero
+            for a destroyed module. No-op when no wagons are aligned.
+            </summary>
+        </member>
+        <member name="M:Mafi.Core.Trains.Train.forceReleaseAndSkipAlignment">
+            <summary>
+            Force-releases any aligned wagons/locomotives and skips the current alignment.
+            Use from Skip paths that may be reached while wagons are aligned (typically
+            pre-phase or fallback skips in <see cref="M:Mafi.Core.Trains.Train.handleTrainScheduleItem"/>).
+            Aligning-phase-only skips do not need this since wagons are not yet aligned.
             </summary>
         </member>
         <member name="M:Mafi.Core.Trains.Train.handleTrainScheduleItem">
@@ -19618,7 +19762,7 @@
             True if any locomotive's fuel is at or below <see cref="P:Mafi.Core.Trains.TrainNetwork.RefuelThreshold"/>.
             </summary>
         </member>
-        <member name="M:Mafi.Core.Trains.TrainNetwork.findBestTrainForCandidate(Mafi.Collections.Lyst{Mafi.Core.Trains.TrainNetwork.TrainData},Mafi.Core.Products.ProductType,Mafi.Quantity,Mafi.Quantity,System.Boolean,Mafi.Quantity@)">
+        <member name="M:Mafi.Core.Trains.TrainNetwork.FindBestTrainForCandidate(Mafi.Collections.Lyst{Mafi.Core.Trains.TrainNetwork.TrainData},Mafi.Core.Products.ProductType,Mafi.Quantity,Mafi.Quantity,System.Boolean,Mafi.Tile2f,Mafi.Quantity@)">
              <summary>
              Selects the best idle train for a (source, dest, product) candidate.
              Returns the index into <paramref name="idleTrains"/>, or -1 if no train should
@@ -19640,6 +19784,10 @@
             
              If all eligible trains fall into "forced partial" (cap > maxExch for all),
              the one with the smallest (cap - availQty) is dispatched.
+            
+             Among trains that are equally good by capacity (full-load ties of largest cap, or
+             forced-partial ties of smallest diff), the one nearest to the supply station is
+             chosen so trains start trips faster.
              </summary>
         </member>
         <member name="M:Mafi.Core.Trains.TrainNetworkJob.MoveToNextPhase">
@@ -19659,7 +19807,9 @@
         </member>
         <member name="T:Mafi.Core.Trains.TrainNetworkLoadedDepartCondition">
             <summary>
-            Depart condition that fires when a network train has loaded enough cargo for its job.
+            Depart condition for network train pickups. Keeps the train at the supply station
+            while the reservation can still be fulfilled, and lets it depart once it is fulfilled
+            or once the supply has run out.
             </summary>
         </member>
         <member name="P:Mafi.Core.Trains.TrainPathFindingTask.IsPathImprovementTask">
@@ -19774,6 +19924,13 @@
             The train station group ID this plan was prepared for.
             </summary>
         </member>
+        <member name="F:Mafi.Core.Trains.TrainStationAlignmentPlan.StationGroupVersion">
+            <summary>
+            Snapshot of <see cref="P:Mafi.Core.Trains.TrainStationGroup.AlignmentVersion"/> at the time this plan
+            was created. If the live group's version no longer matches, the plan's module
+            indices are stale and the train will skip the alignment.
+            </summary>
+        </member>
         <member name="F:Mafi.Core.Trains.TrainStationAlignmentPlan.TrainIsInReverse">
             <summary>
             If true, the train alignment indexing is for the reverse ordering of the train.
@@ -19811,6 +19968,12 @@
         <member name="M:Mafi.Core.Trains.TrainStationAlignmentPlan.getProductProto(Mafi.Core.Trains.ITrainStationBase)">
             <summary>
             Get the product of a train station.
+            </summary>
+        </member>
+        <member name="P:Mafi.Core.Trains.TrainStationAlignmentState.StationGroupVersion">
+            <summary>
+            Snapshot of the station group's alignment version at plan creation time.
+            See <see cref="P:Mafi.Core.Trains.TrainStationGroup.AlignmentVersion"/>.
             </summary>
         </member>
         <member name="P:Mafi.Core.Trains.TrainStationAlignmentState.IsComplete">
@@ -19961,6 +20124,17 @@
             <summary>
             Remaining train slots for this group for the current dispatch tick.
             Used solely by TrainNetwork as a cache for better perf. Don't touch it!
+            </summary>
+        </member>
+        <member name="P:Mafi.Core.Trains.TrainStationGroup.AlignmentVersion">
+            <summary>
+            Monotonically increasing counter bumped whenever the group's physical alignment
+            surface changes - module added/removed/replaced, module direction toggled, module
+            product cleared or changed, group rebuilt due to track direction flip. A
+            <see cref="T:Mafi.Core.Trains.TrainStationAlignmentPlan"/> snapshots this on creation; if the live
+            value diverges, in-flight plans hold stale module indices and the train must skip.
+            Changes that only affect dispatch (linked storages, arrival rule fields, train
+            limit, allowed fuels) do NOT bump this.
             </summary>
         </member>
         <member name="M:Mafi.Core.Trains.TrainStationGroup.GetTotalServicingTrainsCount">
@@ -20146,6 +20320,14 @@
             Removes and re-adds a station entity, destroying and recreating its group if it is a root.
             </summary>
         </member>
+        <member name="M:Mafi.Core.Trains.TrainStationManager.BumpAlignmentVersionForModule(Mafi.Core.Trains.ITrainStationBase)">
+            <summary>
+            Bumps the alignment version of the group this module belongs to, invalidating
+            any in-flight train alignment plans. Callers are module state changes that
+            alter physical alignment compatibility (product change, direction toggle,
+            prototype upgrade) but do not flow through <see cref="M:Mafi.Core.Trains.TrainStationManager.rebuildTrainStationGroup(Mafi.Core.Trains.TrainStationGroup)"/>.
+            </summary>
+        </member>
         <member name="M:Mafi.Core.Trains.TrainStationManager.TryGetDirectionForProduct(Mafi.Core.Trains.ITrainStationModule,Mafi.Core.Products.ProductProto)">
             <summary>
             Returns the loading/unloading direction used by an existing module in the same group
@@ -20234,7 +20416,11 @@
             The set of station group IDs included in this schedule item, maintained to avoid searching the entity list.
             </summary>
             <remarks>
-            This is not saved because it can be reconstructed after loading by querying the train station manager.
+            Persisted directly so that the set stays consistent with <see cref="F:Mafi.Core.Trains.TrainStationScheduleItem.m_stationRoots"/> and
+            <see cref="F:Mafi.Core.Trains.TrainStationScheduleItem.DepartConditions"/> across save/load. Earlier versions reconstructed this on load by
+            iterating <see cref="F:Mafi.Core.Trains.TrainStationScheduleItem.m_stationRoots"/>, which silently skipped roots whose <c>IsTrackEnabled</c>
+            was false (e.g. under-construction stations) and produced a desynced state that crashed
+            <see cref="M:Mafi.Core.Trains.TrainStationScheduleItem.AddRoot(Mafi.Core.Trains.ITrainStationRoot,System.Int32)"/> on subsequent re-add.
             </remarks>
         </member>
         <member name="M:Mafi.Core.Trains.TrainStationScheduleItem.AnyValidStations">
@@ -21135,6 +21321,11 @@
             Use this to prevent thin geometry (e.g. thin railings) from casting shadows.
             Default is <see cref="F:Mafi.Core.Trains.ITrainTrackGfx.DEFAULT_SHADOW_UV_CLIP_Y"/> (effectively no culling).
             </remarks>
+        </member>
+        <member name="P:Mafi.Core.Trains.ITrainTrackGfx.OverlayRendererIndex">
+            <summary>
+            Runtime index assigned by overlay renderers.
+            </summary>
         </member>
         <member name="P:Mafi.Core.Trains.EntityWithTrainTrackBaseProto.MaxSpeedTilesPerTick">
             <summary>
